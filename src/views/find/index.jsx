@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Find extends Component {
     render() {
         return (
-            <div>Home</div>
+            <div>Find</div>
         )
     }
 }
 
-export default Home;
+export default Find;
