@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="test">测试</p>
-        <div className="box"></div>
+        <div className="ignore-box"></div>
         <Routes/>
       </div>
     );

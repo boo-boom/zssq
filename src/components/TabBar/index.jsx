@@ -5,7 +5,7 @@ class TabBar extends Component {
     return (
       <div>
         TabBar
-        <p className="ignoreToRem">
+        <p className="ignore-box">
           <span>11</span>
         </p>
       </div>
