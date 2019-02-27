@@ -1,0 +1,16 @@
+.ignore-box {
+  width: 20px;
+  height: 20px;
+  background: #000;
+}
+
+.active {
+  color: #333;
+}
+
+.content {
+  background: $red;
+  & > a {
+    color: #a3a3a3;
+  }
+}
