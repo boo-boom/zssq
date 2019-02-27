@@ -5,18 +5,19 @@
   box-sizing: border-box;
 }
 
-// body {
-//   // min-width: 320px;
-//   // max-width: 750px;
-// }
+body {
+  // min-width: 320px;
+  // max-width: 750px;
+  background: #eee;
+}
 
 .test {
   font-size: 1rem;
 }
 
 .box {
-  border: 1px solid red;
-  width: 210px;
+  border: 2px solid red;
+  width: 750px;
   height: 210px;
   // border-radius: 50%;
 }
