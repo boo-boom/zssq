@@ -98,9 +98,10 @@ module.exports = function(webpackEnv) {
               stage: 3,
             }),
             require('postcss-pxtorem')({
-              rootValue: 75,
-              propWhiteList: [],
-              minPixelValue: 2,
+              rootValue: 75,                          // 根像素
+              minPixelValue: 2,                       // 最小需要转换的像素
+              unitPrecision: 5,                       // rem单位取小数点后几位
+              selectorBlackList: ['ignoreToRem'],     // 要忽略转换成rem的class
             })
           ],
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
