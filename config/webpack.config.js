@@ -116,6 +116,16 @@ module.exports = function(webpackEnv) {
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         },
       });
+      if (preProcessor === 'sass-loader') {
+        loaders.push({
+          loader: require.resolve('sass-resources-loader'),
+          options: {
+            resources: [
+              path.resolve(__dirname, '../src/assets/style/variable.scss'),
+            ]
+          }
+        })
+      }
     }
     return loaders;
   };

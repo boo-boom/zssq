@@ -1,6 +1,6 @@
-@import './reset.scss';
-@import './variable.scss';
-@import './../font/iconfont.css';
+@import '~@assets/style/reset.scss';
+@import '~@assets/style/variable.scss';
+@import '~@assets/font/iconfont.css';
 
 * {
   box-sizing: border-box;
@@ -8,5 +8,4 @@
 
 a:active {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: $red;
 }
