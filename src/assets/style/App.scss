@@ -1,0 +1,22 @@
+@import './reset.scss';
+@import './../font/iconfont.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  // min-width: 320px;
+  // max-width: 750px;
+}
+
+.test {
+  font-size: 1rem;
+}
+
+.box {
+  border: 1px solid red;
+  width: 210px;
+  height: 210px;
+  // border-radius: 50%;
+}
