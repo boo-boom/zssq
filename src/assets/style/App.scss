@@ -1,23 +1,12 @@
 @import './reset.scss';
+@import './variable.scss';
 @import './../font/iconfont.css';
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  // min-width: 320px;
-  // max-width: 750px;
-  background: #eee;
-}
-
-.test {
-  font-size: 1rem;
-}
-
-.ignore-box {
-  border: 2px solid red;
-  width: 210px;
-  height: 210px;
-  // border-radius: 50%;
+a:active {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: $red;
 }
