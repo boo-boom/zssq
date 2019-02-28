@@ -5,12 +5,28 @@
 }
 
 .active {
-  color: #333;
+  color: black;
 }
 
 .content {
-  background: $red;
+  background: #ccc;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 750px;
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $gray_1;
   & > a {
-    color: #a3a3a3;
+    color: $gray_3;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
   }
 }
