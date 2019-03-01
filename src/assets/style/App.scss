@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html, body, #root, .App {
+  height: 100%;
+}
+
 a {
   text-decoration: none;
 }
@@ -13,3 +17,4 @@ a {
 a:active {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
