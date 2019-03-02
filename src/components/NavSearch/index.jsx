@@ -5,7 +5,11 @@ import './style.scss';
 class NavSearch extends Component {
   render() {
     return(
-      <div className="nav-search">{this.props.keyword || 'NavSearch'}</div>
+      <div className="nav-search">
+        {/* {this.props.keyword || 'NavSearch'} */}
+        <span className="iconfont iconsousuo"></span>
+        <input type="text" placeholder="那年那蝉那把剑"/>
+      </div>
     )
   }
 };
