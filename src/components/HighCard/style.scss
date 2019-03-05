@@ -1,0 +1,142 @@
+.high-card {
+  background: $white;
+
+  &>.title {
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 28px;
+    @include border(after, bottom);
+
+    .desc {
+      display: flex;
+      align-items: center;
+
+      .name {
+        padding: 0 10px;
+      }
+
+      .line-l,
+      .line-r {
+        display: block;
+        width: 90px;
+        height: 20px;
+        position: relative;
+      }
+
+      .line-l::before,
+      .line-r::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: $black;
+      }
+
+      .line-l::after,
+      .line-r::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 65px;
+        height: 2px;
+        background: $black;
+      }
+
+      .line-l::before {
+        right: 0;
+      }
+
+      .line-r::before {
+        left: 0;
+      }
+
+      .line-l::after {
+        left: 0;
+      }
+
+      .line-r::after {
+        right: 0;
+      }
+    }
+
+    .more {
+      font-size: 22px;
+      color: $gray_3;
+    }
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    font-size: 24px;
+    height: 250px;
+    @include border(after, bottom);
+    .left {
+      flex: 1;
+      height: 100%;
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .top {
+        .title {
+          margin-bottom: 20px;
+          font-size: 28px;
+        }
+
+        .tags {
+          margin-bottom: 20px;
+          font-size: 20px;
+
+          span {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+
+            &:nth-child(1) {
+              color: #d9ae5b;
+              background: #fcf7d5;
+            }
+
+            &:nth-child(2) {
+              color: #db837d;
+              background: #f7edec;
+            }
+
+            &:nth-child(3) {
+              color: #8ea7e3;
+              background: #e8edf9;
+            }
+          }
+        }
+
+        .text {
+          line-height: 30px;
+          font-size: 26px;
+          color: $gray_3;
+        }
+      }
+      .other {
+        font-size: 22px;
+        color: $gray_5;
+      }
+    }
+    .right {
+      flex: 0 0 230px;
+      width: 230px;
+      height: 160px;
+
+      &>img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+  }
+}

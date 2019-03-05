@@ -1,0 +1,112 @@
+.cart-list {
+  background: $white;
+  .title {
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 28px;
+    @include border(after, bottom);
+    .more {
+      font-size: 22px;
+      color: $gray_3;
+    }
+  }
+  .cart-1-4, .cart-1-1 {
+    padding: 30px;
+    overflow: hidden;
+    .item-1 {
+      display: flex;
+      .cover {
+        flex: 0 0 150px;
+        width: 150px;
+        height: 200px;
+        margin-right: 20px;
+        border-radius: 5px;
+        overflow: hidden;
+        & > img {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
+      .info {
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // @include border(after, bottom);
+        .top {
+          .name {
+            margin-top: 10px;
+            margin-bottom: 25px;
+          }
+          .desc {
+            font-size: 24px;
+            line-height: 36px;
+            color: $gray_3;
+          }
+        }
+        .other {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 22px;
+          // padding-bottom: 10px;
+          .author {
+            color: $gray_3;
+            .iconfont {
+              padding-right: 8px;
+              font-size: 22px;
+            }
+          }
+          .tags {
+            display: flex;
+            span {
+              display: block;
+              border-radius: 20px;
+              padding: 10px 15px;
+              margin-left: 10px;
+              font-size: 18px;
+              color: $gray_3;
+              background: $gray_1;
+            }
+          }
+        }
+      }
+    }
+    .item-4 {
+      display: flex;
+      padding-top: 30px;
+      width: calc(100% + 30px);
+      .child {
+        margin-right: 30px;
+        .cover {
+          width: 150px;
+          height: 200px;
+          border-radius: 5px;
+          overflow: hidden;
+          & > img {
+            width: 100%;
+            height: 100%;
+            display: block;
+          }
+        }
+        .name {
+          display: block;
+          font-size: 24px;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+  .cart-1-1 {
+    .info {
+      @include border(after, bottom);
+      .other {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

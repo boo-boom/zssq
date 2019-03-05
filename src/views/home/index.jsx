@@ -1,46 +1,60 @@
 import React, { Component } from "react";
 import NavSearch from '@components/NavSearch';
 import TabBarBlank from '@components/TabBarBlank';
+import Swipers from '@components/Swipers';
+import CardList from '@components/CardList';
+import RecCard from '@components/RecCard';
+import HighCard from '@components/HighCard';
+import Blank from '@components/Blank';
 import './style.scss';
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      cates: [
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-        {name: '读书'},
-      ]
-    }
-  }
   render() {
     return (
       <div id="home">
         <div className="content">
           <NavSearch />
-          <div className="horizontal-menu">
-            <ul>
-              <li className="active">读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-              <li>读书</li>
-            </ul>
-            <span className="iconfont iconmore"></span>
+          <div className="banner">
+            <Swipers type="banner" />
           </div>
+          <div className="cate-nav">
+            <div className="item">
+              <span className="iconfont iconfenlei1"></span>
+              <span className="text">分类</span>
+            </div>
+            <div className="item">
+              <span className="iconfont iconpaihang"></span>
+              <span className="text">排行</span>
+            </div>
+            <div className="item">
+              <span className="iconfont iconshu"></span>
+              <span className="text">书单</span>
+            </div>
+            <div className="item">
+              <span className="iconfont iconhuzhu"></span>
+              <span className="text">书荒</span>
+            </div>
+          </div>
+          <div className="rec-link">
+            <div className="left">
+              <img src="http://dummyimage.com/70x70" alt="" />
+            </div>
+            <div className="middle">
+              <p className="title">调整口味，为您精准推荐好书</p>
+              <p className="desc">当前暂未设置阅读口味</p>
+            </div>
+            <div className="right">
+              <span className="iconfont iconarrowll-r"></span>
+            </div>
+          </div>
+          <Blank/>
+          <CardList type="1-4"/>
+          <Blank/>
+          <CardList type="1-1"/>
+          <Blank/>
+          <RecCard/>
+          <Blank/>
+          <HighCard/>
         </div>
         <TabBarBlank />
       </div>

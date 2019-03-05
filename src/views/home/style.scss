@@ -2,50 +2,85 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 30px;
   touch-action: none;
+  background: #eee;
   .content {
     flex: 1;
     overflow-y: scroll;
-    padding-top: 30px;
     -webkit-overflow-scrolling: touch;
-    .horizontal-menu {
-      margin-top: 10px;
-      padding-right: 30px;
-      height: 100px;
-      line-height: 100px;
-      font-size: 30px;
-      overflow: hidden;
-      @include border(after, bottom, $gray_1);
-      & > ul {
+    .banner {
+      padding: 0 30px;
+      background: $white;
+    }
+    .cate-nav {
+      display: flex;
+      padding: 40px 0;
+      background: $white;
+      .item {
+        flex: 1;
         display: flex;
-        width: 100%;
-        height: 120px;
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: touch;
-        li {
-          padding-right: 30px;
-          white-space: nowrap;
-          width: auto;
-          color: $gray_3;
-          font-weight: normal;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .iconfont {
+          font-size: 55px;
+          margin-bottom: 20px;
         }
-        .active {
-          color: $red_1;
-          font-weight: 600;
+        .text {
+          color: $gray_3;
+          font-size: 28px;
+        }
+        &:nth-child(1) .iconfont {
+          color: #5a8ce9;
+        }
+        &:nth-child(2) .iconfont {
+          color: #7db769;
+        }
+        &:nth-child(3) .iconfont {
+          color: #eb7471;
+        }
+        &:nth-child(4) .iconfont {
+          color: #e8a241;
         }
       }
-      .iconfont {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-        text-align: right;
-        line-height: 100px;
-        font-size: 36px;
-        color: $gray_3;
-        background: linear-gradient(to right, rgba(255,255,255,0.1), $white);
+    }
+    .rec-link {
+      display: flex;
+      margin-top: 20px;
+      height: 160px;
+      background: $white;
+      .left {
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+        }
+      }
+      .middle {
+        flex: 1;
+        font-size: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        & > p {
+          line-height: 42px;
+        }
+        .desc {
+          font-size: 28px;
+          color: $gray_3;
+        }
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        .iconfont {
+          color: $gray_3;
+          font-size: 28px;
+        }
       }
     }
   }

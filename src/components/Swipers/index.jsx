@@ -9,15 +9,18 @@ import './style.scss';
 class Swipers extends Component {
   componentWillUnmount() {
     // 离开组件时销毁swiper
-    if(this.swiperHorizontalMenu) this.swiperHorizontalMenu.destroy()
+    if(this.swiperBanner) this.swiperBanner.destroy()
   }
   componentDidMount() {
     switch (this.props.type) {
-      case 'horizontalMenu':
-        this.swiperHorizontalMenu = new Swiper(this.horizontalMenu, {
-          slidesPerView: 'auto',
-          spaceBetween: 30,
-          freeMode: true,
+      case 'banner':
+        this.swiperBanner = new Swiper(this.banner, {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
         });
         break;
       default:
@@ -27,30 +30,25 @@ class Swipers extends Component {
   createTemplate() {
     const props = this.props;
     switch (props.type) {
-      case 'horizontalMenu':
-        return <div className="swiper-container" ref={(horizontalMenu) => { this.horizontalMenu = horizontalMenu }}>
-                <div className="swiper-wrapper">
-                  {/* <div className="swiper-slide">Slide 1</div>
-                  <div className="swiper-slide">Slide 2</div>
-                  <div className="swiper-slide">Slide 3</div>
-                  <div className="swiper-slide">Slide 4</div>
-                  <div className="swiper-slide">Slide 5</div>
-                  <div className="swiper-slide">Slide 6</div>
-                  <div className="swiper-slide">Slide 7</div>
-                  <div className="swiper-slide">Slide 8</div>
-                  <div className="swiper-slide">Slide 9</div>
-                  <div className="swiper-slide">Slide 10</div> */}
-                  {
-                    props.data.map((item,index)=>{
-                      return (
-                        <div className="swiper-slide" key={`${item.name}-${index}`}>
-                          <p className="cate-item">{item.name}</p>
-                        </div>
-                      )
-                    })
-                  }
+      case 'banner':
+        return (
+          <div className="swpier-banner">
+            <div className="swiper-container" ref={(banner) => { this.banner = banner }}>
+                  <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <img src="http://dummyimage.com/750x280" alt="" />
+                    </div>
+                    <div className="swiper-slide">
+                      <img src="http://dummyimage.com/750x280" alt="" />
+                    </div>
+                    <div className="swiper-slide">
+                      <img src="http://dummyimage.com/750x280" alt="" />
+                    </div>
+                  </div>
+                  <div className="swiper-pagination"></div>
                 </div>
-              </div>
+          </div>
+        )
       default:
         return null;
     }
