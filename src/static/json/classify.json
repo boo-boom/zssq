@@ -1,0 +1,647 @@
+{
+  "male": [
+      {
+          "alias": "ns_xuanhuan",
+          "name": "玄幻",
+          "bookCount": 563517,
+          "monthlyCount": 287455,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2107590%2F2107590_2607eaf03b2542ba88e4b75ac96bb12c.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F968225%2F968225_f4afe519766d4c9ab8bfaac913c6e99d.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1074191%2F1074191_508788101c57495d88cb884b12213f03.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_doushi",
+          "name": "都市",
+          "bookCount": 430675,
+          "monthlyCount": 192484,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F867173%2F867173_13d48da76f6842069938eeb92226aa9b.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1186216%2F1186216_02fc68344fab483e9abf8ad159a84659.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F685604%2F685604_f1298d7f055b49c493159e8202be6c9d.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_lingyi",
+          "name": "灵异",
+          "bookCount": 11952,
+          "monthlyCount": 5077,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F40372%2F40372_af21e1f8b5da416ca2c9dd42b5b9b0ca.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2190222%2F2190222_35193469a0ab4198b58e13ec34d49b47.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F45780%2F_45780_829363.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_xianxia",
+          "name": "仙侠",
+          "bookCount": 153550,
+          "monthlyCount": 69318,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2014980%2F2014980_4886fb1ed53f453a9a76005611a3310a.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F682770%2F682770_88d45e47e42f4177802c07613801cc41.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F685376%2F685376_028e413e81c64020b27a2cea7ddd566c.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_youxi",
+          "name": "游戏",
+          "bookCount": 86638,
+          "monthlyCount": 28840,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683722%2F683722_b51023a86ba44e4f849045de98c82714.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683741%2F683741_58063495ca124751b29de66cfc2056a6.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2202011%2F2202011_412601e37a0849f6a01519603f1c20e7.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_kehuan",
+          "name": "科幻",
+          "bookCount": 137038,
+          "monthlyCount": 44436,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683370%2F683370_5d4ee84fac44469a84e9eb8a0e30e452.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1377367%2F_1377367_476658.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683311%2F_683311_462715.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_zhichang",
+          "name": "职场",
+          "bookCount": 17660,
+          "monthlyCount": 9133,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1180110%2F1180110_d7927a5f528349cf8b45a26d4bd1847f.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1418390%2F1418390_169b16a1fb474e2fa7d9ad586363ef3a.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F44460%2F44460_7e285861799b45fa82052e6d1fb61cb0.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_lishi",
+          "name": "历史",
+          "bookCount": 26391,
+          "monthlyCount": 8787,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2231198%2F2231198_47181a1305614a9cba262340ae7d0fb1.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F685290%2F685290_99252a5f588b4948a31734c95d39d044.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1493802%2F1493802_62539f45ae7443199c455a4bdd69e6a4.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_junshi",
+          "name": "军事",
+          "bookCount": 17268,
+          "monthlyCount": 6784,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F189800%2F_189800_115674.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2157849%2F2157849_f9524888d01d41b4a3cdb1cc30f2cc9a.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F685415%2F685415_6456dc47d208496e96cd0e2c04b386a5.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_qingxiaoshuo",
+          "name": "轻小说",
+          "bookCount": 9890,
+          "monthlyCount": 1982,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3346982%2F3346982_6d178eef353b455798336ba7f92bc62b.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2034268%2F2034268_41991937b4b04ba4917042d47b4b6fbd.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3311046%2F3311046_f871bf4609dc4f218a3b1b1b1ddf3016.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_qihuan",
+          "name": "奇幻",
+          "bookCount": 60139,
+          "monthlyCount": 22491,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1463342%2F1463342_cd383673775c45aeab53682e9011d240.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2286174%2F2286174_4bc4e20b6d4d40a39670561f0fda0023.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2028848%2F2028848_a86b738705f8400bba31413403da9bd1.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_wuxia",
+          "name": "武侠",
+          "bookCount": 50608,
+          "monthlyCount": 18863,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F682805%2F682805_ad98924f53e74138a50e69208bd579be.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2214174%2F2214174_edf5c5b304aa4c628faf0994b7f04d9c.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1380380%2F_1380380_432826.jpg%2F"
+          ]
+      },
+      {
+          "alias": "ns_tiyu",
+          "name": "体育",
+          "bookCount": 7419,
+          "monthlyCount": 2236,
+          "icon": null,
+          "gender": "male",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2038746%2F2038746_2d6511a36ebd44debdbc351b67379559.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F858710%2F_858710_513181.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2240532%2F2240532_fc0dda4bd4ae4f4a99738d08d7011bd5_default_cover.png%2F"
+          ]
+      }
+  ],
+  "female": [
+      {
+          "alias": "xiandaiyanqing",
+          "name": "现代言情",
+          "bookCount": 165260,
+          "monthlyCount": 58701,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http://img.1391.com/api/v1/bookcenter/cover/1/2234890/2234890_6b5e1046321b4f7c8f4b31f756b4f88f.jpg/",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2214353%2F2214353_6a5422feb4b1491b88609ab8155ea68c.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2209407%2F2209407_fed9c17bbe734f9fa9ba7a04cba4b809.jpg%2F"
+          ]
+      },
+      {
+          "alias": "gudaiyanqing",
+          "name": "古代言情",
+          "bookCount": 101159,
+          "monthlyCount": 32859,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2241654%2F2241654_63991af2a81e4f37862f9d124f91c44f.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3312151%2F3312151_0d6bd5100d6a409bad87b06256b65a03.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3355231%2F3355231_c29c0b9e3b0d48d9b79cbdb37d9259a3.jpg%2F"
+          ]
+      },
+      {
+          "alias": "huanxiangyanqing",
+          "name": "幻想言情",
+          "bookCount": 27227,
+          "monthlyCount": 6317,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1315785%2F1315785_5f7f59fcbef54feabea42487aa2036ca.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2013810%2F2013810_6b16df7c11a444c18389dcddbfd23cd8.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1422444%2F_1422444_336729.jpg%2F"
+          ]
+      },
+      {
+          "alias": "danmeibaihe",
+          "name": "耽美百合",
+          "bookCount": 2877,
+          "monthlyCount": 1617,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2390042%2F2390042_3179d98d74f54b3b9939d32a391c0a42.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683192%2F_683192_780591.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2180227%2F2180227_4574b4314f5a48de970ecbcdd0ead95d.jpg%2F"
+          ]
+      },
+      {
+          "alias": "kehuankongjian",
+          "name": "科幻空间",
+          "bookCount": 19518,
+          "monthlyCount": 2556,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2020880%2F2020880_65a1932d0a62481596f55ae7250ddf15.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3337177%2F3337177_869321e4d4b54e0b80aed2de01786903_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3344583%2F3344583_fda11e81ca5742628d1dcdabfd4de9d5.png%2F"
+          ]
+      },
+      {
+          "alias": "qingchunxiaoyuan",
+          "name": "青春校园",
+          "bookCount": 24027,
+          "monthlyCount": 8541,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2193945%2F2193945_665e5f5427e643c6905ba87b783d44d7.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1148319%2F_1148319_180682.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3345845%2F3345845_9bd38b2656f14c51b1db8b72d25d2981.jpg%2F"
+          ]
+      },
+      {
+          "alias": "lingyixuanyi",
+          "name": "灵异悬疑",
+          "bookCount": 18814,
+          "monthlyCount": 8016,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1174019%2F1174019_81432459301a4b4f85994039a8dc2315.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3334922%2F3334922_c802a17305ef4605abb168e6932e789d.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2315588%2F2315588_c036af9c446345d09b1451963ba92ece.jpg%2F"
+          ]
+      },
+      {
+          "alias": "tongrenyansheng",
+          "name": "同人衍生",
+          "bookCount": 3591,
+          "monthlyCount": 717,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3345382%2F3345382_215758fb53c24593ab3d8e6cc51a2079.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2664531%2F2664531_d65b97ec796d444da3fa625995194547.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F683694%2F683694_7021015307644a998aeae9e3d0322a10.jpg%2F"
+          ]
+      },
+      {
+          "alias": "youxiqingyuan",
+          "name": "游戏情缘",
+          "bookCount": 2690,
+          "monthlyCount": 358,
+          "icon": null,
+          "gender": "female",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3347568%2F3347568_b058d1b6190448899458a82572c787a8_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3311486%2F3311486_35a57dbe1d9f4ad5be1440e5fb48ea07.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F272771%2F_272771_595729.jpg%2F"
+          ]
+      }
+  ],
+  "picture": [
+      {
+          "alias": "rexue",
+          "name": "热血",
+          "bookCount": 167,
+          "monthlyCount": 57,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F187647%2F187647_0c796ffb0a3d487fab4560a7341de0fa.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F168458%2F168458_51b101f968b547b29eba9e470147a345.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F196709%2F49bf0adad9f640a7a02b78d4f28b12d0.jpg%2F"
+          ]
+      },
+      {
+          "alias": "shaoer",
+          "name": "少儿",
+          "bookCount": 2657,
+          "monthlyCount": 1457,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F188493%2Fa09a7a72e1914850b6c586e638abad0c.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F191816%2F180732f541614d2ab0bebd778516aae6.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F189581%2F7f0b95953c394769900faf2a3a1fffa8.jpg%2F"
+          ]
+      },
+      {
+          "alias": "xuanyi",
+          "name": "悬疑",
+          "bookCount": 81,
+          "monthlyCount": 35,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F173712%2F173712_5b01051a648b40a89293a020330349b5.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2595934%2F2595934_bd6eb62b726446d89f7b439a70a4dc64.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F182683%2Fe94c5a9476594bb9889c18632479d397.jpg%2F"
+          ]
+      },
+      {
+          "alias": "gufeng",
+          "name": "古风",
+          "bookCount": 20,
+          "monthlyCount": 13,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F182356%2F182356_a1603ff69d0f4b18a4f7c39d380bab50.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2219056%2F2219056_0f930c93f33343b0a8792fc84af745e6.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2015168%2F2015168_4f63a97a926e40cea0f83c294d9f2a40.jpg%2F"
+          ]
+      },
+      {
+          "alias": "mohuan",
+          "name": "魔幻",
+          "bookCount": 54,
+          "monthlyCount": 16,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F181552%2F8d4344e511544ecbb4114bbb1bc511a1.JPG%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F177354%2Ff8d9a8fb71c747a48a3ad44d29789a2d.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2595822%2F2595822_fcee60c3b14c49a29d0ec8054b6d3ad1.jpg%2F"
+          ]
+      },
+      {
+          "alias": "gaoxiao",
+          "name": "搞笑",
+          "bookCount": 392,
+          "monthlyCount": 25,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2595678%2F2595678_d6d76d9e2e5d450882d9ec45c7ad5ce7.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2595620%2F2595620_c5dc80ff05e64a3fbff16cde04513c01.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2621867%2F2621867_c3c6cbb4fff945e4831e33190b179ce1.jpg%2F"
+          ]
+      },
+      {
+          "alias": "zongcai",
+          "name": "总裁",
+          "bookCount": 11,
+          "monthlyCount": 4,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F178080%2F178080_85d2f86318ee47239161f35b89e80655.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F177657%2F177657_3e79fb87eec94a6eb252111916813960.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F180881%2F180881_0df0661c94bb4b189be8987a91ef9099.jpg%2F"
+          ]
+      },
+      {
+          "alias": "doushi",
+          "name": "都市",
+          "bookCount": 15,
+          "monthlyCount": 5,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F181524%2F181524_9ff8d2ca7ade456aa58d6253969f9b15.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3118348%2F3118348_129e7ab641ae4fcc9c6daab5a5df28a4.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F180551%2F180551_6c3cf41376684a45b1290fe8b60f5db3.jpg%2F"
+          ]
+      },
+      {
+          "alias": "lianai",
+          "name": "恋爱",
+          "bookCount": 172,
+          "monthlyCount": 58,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F180426%2F180426_2a265a7934084ede8618909cc11b44d4.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2024399%2F2024399_0ce00036acee445da055e075404a0923.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3276634%2F3276634_98f96dbd8aa4467c8c48499b59844634.jpg%2F"
+          ]
+      },
+      {
+          "alias": "qihuan",
+          "name": "奇幻",
+          "bookCount": 33,
+          "monthlyCount": 10,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F167570%2F167570_8ab4eacf34e744209cf3cd7dfbf60337.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F194794%2F05c7678c56714555acf89d0947ace6a2.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F196910%2F196910_7dbedcda1746493087c699f9968c2041.png%2F"
+          ]
+      },
+      {
+          "alias": "chuanyue",
+          "name": "穿越",
+          "bookCount": 7,
+          "monthlyCount": 6,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F194799%2F194799_65bb087e32954ddcaeddc9340b9306a2.JPG%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F183513%2F3ba4b218b2214d3788dd8c9af83b2ba0.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F194812%2F866822f6b08c40ef80b1cea1956fa6ca.jpg%2F"
+          ]
+      },
+      {
+          "alias": "zhongsheng",
+          "name": "重生",
+          "bookCount": 2,
+          "monthlyCount": 0,
+          "icon": null,
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2324770%2F2324770_e809bd5d56624f528e04eb49cb054d53.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F173748%2Fa4d68d9f1f3248378c12aca3336dc616.jpg%2F"
+          ]
+      },
+      {
+          "alias": "juqing",
+          "name": "剧情",
+          "bookCount": 79,
+          "monthlyCount": 18,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F195664%2Faa07f5a0c4e649548a3ae3f03d8d31cc.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2320327%2F2320327_106d166d97ad4a54b50c24cda0082270.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F140750%2Ff56d624fe2e0409b96e2fd885cdc98ed.jpg%2F"
+          ]
+      },
+      {
+          "alias": "xiaoyuan",
+          "name": "校园",
+          "bookCount": 24,
+          "monthlyCount": 8,
+          "icon": "",
+          "gender": "picture",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2015967%2F2015967_fb9b48464c7d492595efafe271d1cc82.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F173723%2Fd7ad0683a3ac45adb07f4416a06eaca9.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2024384%2F2024384_8d26f734393c4625867da204217726ef.jpg%2F"
+          ]
+      }
+  ],
+  "press": [
+      {
+          "alias": "xiaoshuo",
+          "name": "出版小说",
+          "bookCount": 12955,
+          "monthlyCount": 3858,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1462873%2F_1462873_602176.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1518078%2F_1518078_352696.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3353013%2F3353013_bd454528a5ca4a12a9995d3400f8467a.jpg%2F"
+          ]
+      },
+      {
+          "alias": "xinliyulizhi",
+          "name": "心理与励志",
+          "bookCount": 8440,
+          "monthlyCount": 1928,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F576923%2F_576923_095410.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F577424%2F577424_0414241d5b264c2d9c8787d554a58f63.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1148271%2F_1148271_859550.jpg%2F"
+          ]
+      },
+      {
+          "alias": "gongbanshu",
+          "name": "公版书",
+          "bookCount": 4713,
+          "monthlyCount": 522,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2281875%2F2281875_db2c743f0d8d41eca45c46528d876b54.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1418472%2F1418472_899613577e6a4e31be3e296810a9dc37.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F783085%2F_783085_901809.jpg%2F"
+          ]
+      },
+      {
+          "alias": "renwensheke",
+          "name": "人文社科",
+          "bookCount": 89809,
+          "monthlyCount": 14806,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F539819%2F_539819_557251.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F708712%2F_708712_627259.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2082480%2F2082480_e9a7935caaf243e19de8601154dfb283.jpg%2F"
+          ]
+      },
+      {
+          "alias": "shangyeyujingji",
+          "name": "商业与经济",
+          "bookCount": 3497,
+          "monthlyCount": 1049,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2620580%2F2620580_322f582a552b4dc88cc01940f90c9ce2.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1045465%2F_1045465_549565.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2132207%2F2132207_default_cover.png%2F"
+          ]
+      },
+      {
+          "alias": "wenxueyishu",
+          "name": "文学艺术",
+          "bookCount": 25743,
+          "monthlyCount": 5076,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1473233%2F1473233_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3348531%2F3348531_ec65e5adae71452e89114726f5c115fa.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F860009%2F_860009_859932.jpg%2F"
+          ]
+      },
+      {
+          "alias": "shenghuoshishang",
+          "name": "生活时尚",
+          "bookCount": 1927,
+          "monthlyCount": 193,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1498719%2F_1498719_126674.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2170920%2F2170920_cfb0f7947d50467f9d7acfd108817bbb.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2087512%2F2087512_default_cover.png%2F"
+          ]
+      },
+      {
+          "alias": "hulianwang",
+          "name": "互联网",
+          "bookCount": 136,
+          "monthlyCount": 6,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2053376%2F2053376_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2051974%2F2051974_c7980016aa234ad59a1a052102f72604.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2059763%2F2059763_470aeeb87c734bd48134c98dd894365d.jpg%2F"
+          ]
+      },
+      {
+          "alias": "jiankang",
+          "name": "健康",
+          "bookCount": 3186,
+          "monthlyCount": 654,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2170970%2F2170970_ddb8c6b2695c4ee4a1ca7efc81773e98.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2053374%2F2053374_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2305199%2F2305199_741a00260c33456484921a29b4dfef44.jpg%2F"
+          ]
+      },
+      {
+          "alias": "qinzi",
+          "name": "亲子",
+          "bookCount": 7206,
+          "monthlyCount": 1256,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2073870%2F2073870_028cd1fc92f6424aa62b6bc397bc6913.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2191703%2F2191703_1fdb1cc06e694b9c9b82dde4c69b8218.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2123331%2F2123331_default_cover.png%2F"
+          ]
+      },
+      {
+          "alias": "jiaofujiaocai",
+          "name": "教辅教材",
+          "bookCount": 38804,
+          "monthlyCount": 3102,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3348378%2F3348378_e5657a4e65514229bda63850cda9ffe6.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2100645%2F2100645_default_cover.png%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2134790%2F2134790_default_cover.png%2F"
+          ]
+      },
+      {
+          "alias": "manhuazazhi",
+          "name": "漫画杂志",
+          "bookCount": 569,
+          "monthlyCount": 31,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2053642%2F2053642_1675460130664e3295282eeea531f0b9.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2089506%2F2089506_34bb83c21a2e4aac8e607e911153426e.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1126731%2F_1126731_266794.jpg%2F"
+          ]
+      },
+      {
+          "alias": "waiwen",
+          "name": "外文",
+          "bookCount": 2692,
+          "monthlyCount": 94,
+          "icon": null,
+          "gender": "press",
+          "bookCover": [
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F540956%2F_540956_961360.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F2349818%2F2349818_3c81372465bf44f7afe3af55a8abed9e.jpg%2F",
+              "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F3049861%2F3049861_89a06b0428654052baac3d048308c991.jpg%2F"
+          ]
+      }
+  ],
+  "ok": true
+}
