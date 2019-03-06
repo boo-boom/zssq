@@ -1,0 +1,2 @@
+export const ACTION_TEST = 'ACTION_TEST';
+export const GET_JINXUAN_DATA = 'GET_JINXUAN_DATA';

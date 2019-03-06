@@ -5,8 +5,9 @@ import TabBar from '@components/TabBar';
 
 const ErrPage = Loadable(() => import(/* webpackChunkName:"404" */ "@views/404"));
 const Home = Loadable(() => import(/* webpackChunkName:"home" */ "@views/home"));
-const Community = Loadable(() =>import(/* webpackChunkName:"community" */ "@views/community"));
-const Find = Loadable(() =>import(/* webpackChunkName:"find" */ "@views/find"));
+const Community = Loadable(() => import(/* webpackChunkName:"community" */ "@views/community"));
+const Find = Loadable(() => import(/* webpackChunkName:"find" */ "@views/find"));
+const Classify = Loadable(() => import(/* webpackChunkName:"classify" */ "@views/classify"));
 
 const Routes = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
         <Route path="/community" component={Community} />
         <Route path="/find" component={Find} />
         <Route path="/404" component={ErrPage} />
+        <Route path="/classify" component={Classify} />
         <Redirect exact from="/" to="/home" />
         <Redirect to="/404" />
       </Switch>

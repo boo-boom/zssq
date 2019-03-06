@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import NavSearch from '@components/NavSearch';
 import TabBarBlank from '@components/TabBarBlank';
 import Swipers from '@components/Swipers';
@@ -6,10 +8,19 @@ import CardList from '@components/CardList';
 import RecCard from '@components/RecCard';
 import HighCard from '@components/HighCard';
 import Blank from '@components/Blank';
+import { getTest, getJinxuanData } from './reducer';
 import './style.scss';
 
+@connect(
+  state => ({home: state.home}),
+  { getTest, getJinxuanData }
+)
 class Home extends Component {
+  componentWillMount() {
+    this.props.getJinxuanData();
+  }
   render() {
+    console.log(this.props.home)
     return (
       <div id="home">
         <div className="content">
@@ -18,10 +29,10 @@ class Home extends Component {
             <Swipers type="banner" />
           </div>
           <div className="cate-nav">
-            <div className="item">
+            <Link className="item" to="/classify">
               <span className="iconfont iconfenlei1"></span>
               <span className="text">分类</span>
-            </div>
+            </Link>
             <div className="item">
               <span className="iconfont iconpaihang"></span>
               <span className="text">排行</span>
