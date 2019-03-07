@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   touch-action: none;
-  background: #eee;
   .content {
     flex: 1;
     overflow-y: scroll;
@@ -22,13 +21,19 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        img {
+          display: block;
+          width: 56px;
+          height: 56px;
+          margin-bottom: 20px;
+        }
         .iconfont {
           font-size: 55px;
           margin-bottom: 20px;
         }
         .text {
           color: $gray_3;
-          font-size: 28px;
+          font-size: 24px;
         }
         &:nth-child(1) .iconfont {
           color: #5a8ce9;
@@ -46,7 +51,6 @@
     }
     .rec-link {
       display: flex;
-      margin-top: 20px;
       height: 160px;
       background: $white;
       .left {

@@ -3,7 +3,8 @@ import { ACTION_TEST, GET_JINXUAN_DATA } from '@store/actionTypes';
 
 const stateDefault = {
   test: 'qweqweqwe',
-  jingxuan: {}
+  jingxuan: {},
+  loadEnd: false,
 }
 
 // reducer
@@ -12,7 +13,7 @@ export function home (state=stateDefault, action) {
     case ACTION_TEST:
       return {...state, test: action.test}
     case GET_JINXUAN_DATA:
-      return {...state, jingxuan: action.jingxuan}
+      return {...state, ...action }
     default:
       return state;
   }
@@ -37,7 +38,8 @@ export const getJinxuanData = () => {
       if(res.data.ok) {
         dispatch({
           type: GET_JINXUAN_DATA,
-          jingxuan: res.data.data
+          jingxuan: res.data.data,
+          loadEnd: true,
         })
       }
     })

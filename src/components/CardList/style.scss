@@ -32,6 +32,7 @@
         }
       }
       .info {
+        flex: 1;
         font-size: 30px;
         display: flex;
         flex-direction: column;
@@ -102,6 +103,10 @@
     }
   }
   .cart-1-1 {
+    padding-top: 10px;
+    .item-1 {
+      padding-top: 20px;
+    }
     .info {
       @include border(after, bottom);
       .other {

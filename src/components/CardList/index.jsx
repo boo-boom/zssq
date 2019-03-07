@@ -1,84 +1,84 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import { formatNumUnit } from '@assets/js/utils'
 import './style.scss'
 
 class CartList extends Component {
   creat_1_4() {
+    const books = this.props.data.books;
+    const book_4 = books.slice(1, 5);
     return(
       <div className="cart-1-4">
         <div className="item-1">
           <div className="cover">
-            <img src="http://dummyimage.com/150x200" alt="" />
+            <img src={books[0].cover} alt="" />
           </div>
           <div className="info">
             <div className="top">
-              <p className="name">天下攻略</p>
-              <p className="desc">天下攻略天下攻略天下攻略天下攻略天下攻略天下攻略</p>
+              <p className="name">{books[0].title}</p>
+              <p className="desc line-clamp2">{books[0].shortIntro}</p>
             </div>
             <div className="other">
               <p className="author">
                 <span className="iconfont iconuser"></span>
-                <span className="name">田下</span>
+                <span className="name">{books[0].author}</span>
               </p>
               <p className="tags">
-                <span>古代</span>
-                <span>20万字</span>
+                <span>{books[0].majorCate}</span>
+                <span>{formatNumUnit(books[0].wordCount)}</span>
               </p>
             </div>
           </div>
         </div>
+
         <div className="item-4">
-          <div className="child">
-            <div className="cover">
-              <img src="http://dummyimage.com/150x200" alt="" />
-            </div>
-            <p className="name">天下攻略</p>
-          </div>
-          <div className="child">
-            <div className="cover">
-              <img src="http://dummyimage.com/150x200" alt="" />
-            </div>
-            <p className="name">天下攻略</p>
-          </div>
-          <div className="child">
-            <div className="cover">
-              <img src="http://dummyimage.com/150x200" alt="" />
-            </div>
-            <p className="name">天下攻略</p>
-          </div>
-          <div className="child">
-            <div className="cover">
-              <img src="http://dummyimage.com/150x200" alt="" />
-            </div>
-            <p className="name">天下攻略</p>
-          </div>
+          {
+            book_4.map(item => {
+              return (
+                <div className="child" key={item.title}>
+                  <div className="cover">
+                    <img src={item.cover} alt="" />
+                  </div>
+                  <p className="name">{item.title}</p>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     )
   }
   creat_1_1 () {
+    const books = this.props.data.books.slice(0, 10);
     return (
       <div className="cart-1-1">
-        <div className="item-1">
-          <div className="cover">
-            <img src="http://dummyimage.com/150x200" alt="" />
-          </div>
-          <div className="info">
-            <div className="top">
-              <p className="name">天下攻略</p>
-              <p className="desc">天下攻略天下攻略天下攻略天下攻略天下攻略天下攻略</p>
-            </div>
-            <div className="other">
-              <p className="author">
-                <span className="iconfont iconuser"></span>
-                <span className="name">田下</span>
-              </p>
-              <p className="tags">
-                <span>古代</span>
-                <span>20万字</span>
-              </p>
-            </div>
-          </div>
-        </div>
+        {
+          books.map(item => {
+            return (
+              <div className="item-1" key={item._id}>
+                <div className="cover">
+                  <img src={item.cover} alt="" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <p className="name">{item.title}</p>
+                    <p className="desc line-clamp2">{item.shortIntro}</p>
+                  </div>
+                  <div className="other">
+                    <p className="author">
+                      <span className="iconfont iconuser"></span>
+                      <span className="name">{item.author}</span>
+                    </p>
+                    <p className="tags">
+                      <span>{item.majorCate}</span>
+                      <span>{formatNumUnit(item.wordCount)}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
@@ -93,10 +93,11 @@ class CartList extends Component {
     }
   }
   render () {
+    const data = this.props.data;
     return (
       <div className="cart-list">
         <div className="title">
-          <div className="desc">和你口味的书友们都在看</div>
+          <div className="desc">{data.title}</div>
           <div className="more">
             <span className="text">查看更多</span>
             <span className="iconfont iconarrowll-r"></span>
@@ -106,6 +107,11 @@ class CartList extends Component {
       </div>
     )
   }
+}
+
+CartList.propTypes = {
+  type: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 export default CartList;

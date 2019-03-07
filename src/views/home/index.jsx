@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavSearch from '@components/NavSearch';
@@ -8,6 +8,7 @@ import CardList from '@components/CardList';
 import RecCard from '@components/RecCard';
 import HighCard from '@components/HighCard';
 import Blank from '@components/Blank';
+import Loading from '@components/Loading';
 import { getTest, getJinxuanData } from './reducer';
 import './style.scss';
 
@@ -20,53 +21,51 @@ class Home extends Component {
     this.props.getJinxuanData();
   }
   render() {
-    console.log(this.props.home)
+    const home = this.props.home;
+    const loadEnd = home.loadEnd;
+    const jingxuan = home.jingxuan;
+    const spread = jingxuan.spread;
+    const nodes = jingxuan.nodes;
+    const bookList = jingxuan.bookList;
     return (
       <div id="home">
-        <div className="content">
-          <NavSearch />
-          <div className="banner">
-            <Swipers type="banner" />
-          </div>
-          <div className="cate-nav">
-            <Link className="item" to="/classify">
-              <span className="iconfont iconfenlei1"></span>
-              <span className="text">分类</span>
-            </Link>
-            <div className="item">
-              <span className="iconfont iconpaihang"></span>
-              <span className="text">排行</span>
+        {
+          loadEnd
+          ? <div className="content">
+              <NavSearch />
+              <div className="banner">
+                <Swipers type="banner" data={spread[0].advs} />
+              </div>
+              <div className="cate-nav">
+                {
+                  spread[1].advs.map(item => {
+                    if(item.order === 4) return null;
+                    return (
+                      <Link className="item" to="/classify" key={item.title}>
+                        <img src={item.img} alt="" />
+                        <span className="text">{item.title}</span>
+                      </Link>
+                    )
+                  })
+                }
+              </div>
+              {
+                nodes.map(item => {
+                  return(
+                    <Fragment key={item.order}>
+                      <Blank/>
+                      <CardList type={item.bookType==='1加4'?'1-4':'1-1'} data={item}/>
+                    </Fragment>
+                  )
+                })
+              }
+              <Blank/>
+              <RecCard data={spread[3].advs}/>
+              <Blank/>
+              <HighCard data={bookList[0]}/>
             </div>
-            <div className="item">
-              <span className="iconfont iconshu"></span>
-              <span className="text">书单</span>
-            </div>
-            <div className="item">
-              <span className="iconfont iconhuzhu"></span>
-              <span className="text">书荒</span>
-            </div>
-          </div>
-          <div className="rec-link">
-            <div className="left">
-              <img src="http://dummyimage.com/70x70" alt="" />
-            </div>
-            <div className="middle">
-              <p className="title">调整口味，为您精准推荐好书</p>
-              <p className="desc">当前暂未设置阅读口味</p>
-            </div>
-            <div className="right">
-              <span className="iconfont iconarrowll-r"></span>
-            </div>
-          </div>
-          <Blank/>
-          <CardList type="1-4"/>
-          <Blank/>
-          <CardList type="1-1"/>
-          <Blank/>
-          <RecCard/>
-          <Blank/>
-          <HighCard/>
-        </div>
+          : <Loading/>
+        }
         <TabBarBlank />
       </div>
     );

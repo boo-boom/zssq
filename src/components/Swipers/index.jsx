@@ -35,15 +35,15 @@ class Swipers extends Component {
           <div className="swpier-banner">
             <div className="swiper-container" ref={(banner) => { this.banner = banner }}>
                   <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src="http://dummyimage.com/750x280" alt="" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src="http://dummyimage.com/750x280" alt="" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src="http://dummyimage.com/750x280" alt="" />
-                    </div>
+                    {
+                      props.data.map(item => {
+                        return (
+                          <div className="swiper-slide" key={item.link}>
+                            <img src={item.img} alt={item.title} />
+                          </div>
+                        )
+                      })
+                    }
                   </div>
                   <div className="swiper-pagination"></div>
                 </div>
@@ -59,7 +59,8 @@ class Swipers extends Component {
 }
 
 Swipers.propTypes = {
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
 }
 
 export default Swipers;

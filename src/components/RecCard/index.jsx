@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './style.scss'
 
 class RecCard extends Component {
   render() {
     return (
       <div className="rec-card">
-        <div className="card-item">
-          <p className="title">阴间神探</p>
-          <p className="author">道门老九【著】</p>
-          <div className="cover">
-            <img src="http://dummyimage.com/325x130" alt="" />
-          </div>
-        </div>
-        <div className="card-item">
-          <p className="title">阴间神探</p>
-          <p className="author">道门老九【著】</p>
-          <div className="cover">
-            <img src="http://dummyimage.com/325x130" alt="" />
-          </div>
-        </div>
+        {
+          this.props.data.map(item => {
+            return(
+              <div className="card-item" key={item.title}>
+                <p className="title">{item.title}</p>
+                <p className="author">{item.simpleDes}</p>
+                <div className="cover">
+                  <img src={item.img} alt={item.title} />
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
+}
+
+RecCard.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default RecCard;
