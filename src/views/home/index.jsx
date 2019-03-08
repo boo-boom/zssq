@@ -20,6 +20,9 @@ class Home extends Component {
   componentWillMount() {
     this.props.getJinxuanData();
   }
+  goSearch(params) {
+    this.props.history.push('/search')
+  }
   render() {
     const home = this.props.home;
     const loadEnd = home.loadEnd;
@@ -32,7 +35,7 @@ class Home extends Component {
         {
           loadEnd
           ? <div className="content">
-              <NavSearch />
+              <NavSearch goSearch={this.goSearch} />
               <div className="banner">
                 <Swipers type="banner" data={spread[0].advs} />
               </div>
