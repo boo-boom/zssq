@@ -9,15 +9,16 @@ import RecCard from '@components/RecCard';
 import HighCard from '@components/HighCard';
 import Blank from '@components/Blank';
 import Loading from '@components/Loading';
-import { getTest, getJinxuanData } from './reducer';
+import { getTest, getSearchRecommend, getJinxuanData } from './reducer';
 import './style.scss';
 
 @connect(
   state => ({home: state.home}),
-  { getTest, getJinxuanData }
+  { getTest, getSearchRecommend, getJinxuanData }
 )
 class Home extends Component {
   componentWillMount() {
+    this.props.getSearchRecommend();
     this.props.getJinxuanData();
   }
   goSearch(params) {
@@ -30,12 +31,13 @@ class Home extends Component {
     const spread = jingxuan.spread;
     const nodes = jingxuan.nodes;
     const bookList = jingxuan.bookList;
+    const searchRecommend = home.searchRecommend;
     return (
       <div id="home">
         {
           loadEnd
           ? <div className="content">
-              <NavSearch goSearch={this.goSearch} />
+              <NavSearch goSearch={this.goSearch} keyword={searchRecommend} />
               <div className="banner">
                 <Swipers type="banner" data={spread[0].advs} />
               </div>
