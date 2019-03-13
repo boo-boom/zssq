@@ -1,0 +1,29 @@
+.nav-title {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  .title {
+    flex: 1;
+    text-align: center;
+    font-size: 34px;
+  }
+  .left, .right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 150px;
+    font-size: 28px;
+    color: $red_1;
+    background: $white;
+    .iconfont {
+      font-size: 28px;
+    }
+  }
+  .left {
+    padding-left: 30px;
+  }
+  .right {
+    padding-right: 30px;
+    justify-content: flex-end;
+  }
+}

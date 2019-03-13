@@ -12,3 +12,14 @@ export const formatNumUnit = (num) => {
   }
   return `${newNum}字`;
 }
+
+export const debounce = (func, delay) => {
+  var timer = null;
+  return function () {
+    var _arg = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(_arg);
+    }, delay);
+  };
+}

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSearchAll } from './reducer';
+import { debounce } from '@assets/js/utils';
+import { getSearchAll, getSearchSuggest, setCleanSuggest } from './reducer';
 import Loading from '@components/Loading';
 import './style.scss';
 
 @connect(
   state => ({search: state.search}),
-  { getSearchAll }
+  { getSearchAll, getSearchSuggest, setCleanSuggest }
 )
 class Search extends Component {
   constructor(props) {
@@ -15,14 +16,30 @@ class Search extends Component {
       searchValue: ''
     }
     this.changeSearch = this.changeSearch.bind(this);
+    this.goIndex = this.goIndex.bind(this);
   }
   componentWillMount() {
+    this.debounce = debounce(() => {
+      if(this.state.searchValue) {
+        this.props.getSearchSuggest(this.state.searchValue)
+      } else {
+        this.props.setCleanSuggest()
+      }
+    }, 300)
     this.props.getSearchAll();
   }
   changeSearch(e) {
     this.setState({
       searchValue: e.target.value
+    }, this.debounce())
+  }
+  cleanInput() {
+    this.setState({
+      searchValue: ''
     })
+  }
+  goIndex() {
+    this.props.history.push('/home');
   }
   render() {
     const search = this.props.search;
@@ -30,6 +47,8 @@ class Search extends Component {
     const searchRecommend = search.searchRecommend;   // 搜索框内推荐文字
     const searchHotWords = search.searchHotWords;   // 搜索热词
     const hotRecommend = search.hotRecommend;   // 搜索推荐
+    const searchSuggest = search.searchSuggest;   // 搜索联想
+    const showList = searchSuggest.length ? true : false;   // 是否显示联想词列表
     return(
       loadEnd
       ? <div className="search">
@@ -38,7 +57,7 @@ class Search extends Component {
               <input type="text" placeholder={searchRecommend.title} value={this.state.searchValue} onChange={this.changeSearch} />
               <span className="iconfont iconshanchu"></span>
             </div>
-            <div className="btn">取消</div>
+            <div className="btn" onClick={this.goIndex}>取消</div>
           </div>
           <div className="search-hot">
             <div className="title">
@@ -51,7 +70,7 @@ class Search extends Component {
             <ul className="keyword">
               {
                 searchHotWords.map(item => {
-                  return (<li key={item.times}>{item.word}</li>)
+                  return (<li key={item.word}>{item.word}</li>)
                 })
               }
             </ul>
@@ -78,16 +97,31 @@ class Search extends Component {
             </ul>
           </div>
           {/* 搜索结果 */}
-          <div className="keyword-list hide">
+          <div className={`keyword-list ${showList || 'hide'}`}>
             <ul>
-              <li className="item author">
-                <span className="iconfont iconuserline"></span>
-                <span className="name">我吃西虹市<small>作者</small></span>
-              </li>
-              <li className="item">
-                <span className="iconfont iconshuqianline"></span>
-                <span className="name">牛逼闪闪</span>
-              </li>
+              {
+                searchSuggest.length && searchSuggest.map(item => {
+                  let creatItems = [];
+                  if(item.tag === "bookauthor") {
+                    creatItems.push(
+                      <li className="item author" key={`bookauthor_${item.url}`}>
+                        <span className="iconfont iconuserline"></span>
+                        <span className="name">{item.text}<small>作者</small></span>
+                      </li>
+                    )
+                  } else if(item.tag === "bookname") {
+                    creatItems.push(
+                      <li className="item" key={`bookname_${item.url}`}>
+                        <span className="iconfont iconshuqianline"></span>
+                        <span className="name">{item.text}</span>
+                      </li>
+                    )
+                  } else {
+                    creatItems = null
+                  }
+                  return (creatItems)
+                })
+              }
             </ul>
           </div>
         </div>
