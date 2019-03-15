@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import NavSearch from '@components/NavSearch';
 import TabBarBlank from '@components/TabBarBlank';
 import Swipers from '@components/Swipers';
-import CardList from '@components/CardList';
+import CartBox from '@components/CartBox';
 import RecCard from '@components/RecCard';
 import HighCard from '@components/HighCard';
+import BookList from '@components/BookList';
 import Blank from '@components/Blank';
 import Loading from '@components/Loading';
 import { getTest, getSearchRecommend, getJinxuanData } from './reducer';
@@ -59,7 +60,9 @@ class Home extends Component {
                   return(
                     <Fragment key={item.order}>
                       <Blank/>
-                      <CardList type={item.bookType==='1加4'?'1-4':'1-1'} data={item}/>
+                      <CartBox title={item.title}>
+                        {<BookList type={item.bookType==='1加4'?'1-4':'1-1'} data={item.bookType==='1加4'?item.books:item.books.slice(0, 1)}/>}
+                      </CartBox>
                     </Fragment>
                   )
                 })

@@ -14,10 +14,15 @@
       padding-left: 30px;
       border-radius: 20px;
       background: $gray_4;
+      form {
+        font-size: 28px;
+        width: 100%;
+        height: 60px;
+      }
       input {
         font-size: 28px;
         width: 100%;
-        height: 40px;
+        height: 60px;
         background: $gray_4;
         border: none;
         outline: none;
@@ -37,16 +42,14 @@
       color: $red_1;
     }
   }
-  .search-hot {
+  .search-hot, .search-rec, .search-history {
     padding-bottom: 20px;
-    @include border(after, bottom);
     .title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-size: 26px;
       height: 100px;
-      display: flex;
-      align-items: center;
       .left {
         font-size: 32px;
         color: $gray_6;
@@ -54,15 +57,18 @@
       .right {
         display: flex;
         align-items: center;
+        color: $gray_3;
         .more {
           padding-right: 10px;
-          color: $gray_3;
         }
         .iconfont {
           font-size: 24px;
         }
       }
     }
+  }
+  .search-hot {
+    @include border(after, bottom);
     .keyword {
       display: flex;
       flex-wrap: wrap;
@@ -78,36 +84,30 @@
     }
   }
   .search-rec {
-    margin-top: 20px;
-    .title {
-      display: flex;
-      justify-content: space-between;
-      font-size: 26px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      .left {
-        font-size: 32px;
-        color: $gray_6;
-      }
-      .right {
-        display: flex;
-        align-items: center;
-        .more {
-          padding-right: 10px;
-          color: $gray_3;
-        }
-        .iconfont {
-          font-size: 24px;
-        }
-      }
-    }
     .keyword {
       display: flex;
       flex-wrap: wrap;
       font-size: 30px;
       li {
         width: 50%;
+        margin-bottom: 30px;
+        color: $gray_3;
+        display: flex;
+        align-items: center;
+        line-height: 40px;
+        .iconfont {
+          font-size: 32px;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+  .search-history {
+    @include border(after, top);
+    .keyword {
+      font-size: 30px;
+      li {
+        width: 100%;
         margin-bottom: 40px;
         color: $gray_3;
         display: flex;
@@ -115,7 +115,6 @@
         .iconfont {
           font-size: 32px;
           padding-right: 10px;
-          margin-top: 5px;
         }
       }
     }
@@ -126,6 +125,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 10;
     padding: 30px;
     background: $white;
     overflow-y: scroll;
@@ -142,18 +142,84 @@
         color: $gray_3;
         padding-right: 20px;
       }
-      &.author {
-        .name {
-          display: flex;
-          align-items: center;
-          small {
-            margin-left: 10px;
-            padding: 5px 10px;
-            border-radius: 20px;
-            background: $gray_1;
-            font-size: 20px;
-            color: $gray_3;
+      .name {
+        display: flex;
+        align-items: center;
+        small {
+          margin-left: 10px;
+          padding: 5px 10px;
+          border-radius: 20px;
+          background: $gray_1;
+          font-size: 20px;
+          color: $gray_3;
+        }
+      }
+    }
+  }
+  .result-content {
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 30px;
+    background: $white;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    .btns {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 30px;
+      @include border(after, bottom);
+      .btn {
+        flex: 0 0 calc(50% - 15px);
+        width: calc(50% - 15px);
+        height: 60px;
+        font-size: 30px;
+        padding: 0 40px 0 95px;
+        background: $gray_1;
+        color: $gray_3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        .iconfont {
+          font-size: 26px;
+        }
+        &.cur {
+          color: $red_4;
+          background: $red_3;
+        }
+      }
+    }
+    .result-list {
+      margin: 0 30px;
+      .type {
+        display: flex;
+        align-items: center;
+        padding: 30px 0;
+        font-size: 32px;
+        @include border(after, bottom);
+        .iconfont {
+          padding-right: 10px;
+          font-size: 32px;
+          color: $gray_3;
+          &.iconshuqian {
+            font-weight: bold;
           }
+        }
+        .title {
+          color: $gray_3;
+          padding-right: 10px;
+        }
+        .tag {
+          background: $gray_1;
+          color: $gray_3;
+          font-size: 22px;
+          line-height: 1;
+          padding: 6px 10px;
+          margin-right: 10px;
+          border-radius: 17px;
         }
       }
     }

@@ -1,18 +1,4 @@
-.cart-list {
-  background: $white;
-  .title {
-    display: flex;
-    height: 100px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    font-size: 28px;
-    @include border(after, bottom);
-    .more {
-      font-size: 22px;
-      color: $gray_3;
-    }
-  }
+.book-list {
   .cart-1-4, .cart-1-1 {
     padding: 30px;
     overflow: hidden;

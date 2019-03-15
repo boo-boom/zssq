@@ -1,7 +1,7 @@
-import config from './config'
+import { baseUrl } from './config'
 
 export const formatImg = (src) => {
-  const newSrc = src.indexOf('statics.zhuishushenqi.com') >= 0 ? src : `${config.imgBaseUrl}${src}`
+  const newSrc = src.indexOf('statics.zhuishushenqi.com') >= 0 ? src : `${baseUrl.imgBaseUrl}${src}`
   return decodeURIComponent(newSrc);
 }
 
@@ -22,4 +22,12 @@ export const debounce = (func, delay) => {
       func(_arg);
     }, delay);
   };
+}
+
+export const devDebug = () => {
+  const href = window.location.href;
+  if(href.match(/http(s)?:\/\/(192\.168\.\d{1,3}\.\d{1,3})/)) {
+    const VConsole = require('vconsole/dist/vconsole.min.js');
+    new VConsole();
+  }
 }

@@ -1,0 +1,29 @@
+.tab {
+  height: 90px;
+  @include border(after, bottom, #ddd);
+  ul {
+    display: flex;
+    height: 100%;
+    font-size: 30px;
+    li {
+      flex: 1;
+      text-align: center;
+      line-height: 90px;
+      &.active {
+        color: $red_2;
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: 2;
+          display: block;
+          height: 2px;
+          width: 100%;
+          background: $red_2;
+        }
+      }
+    }
+  }
+}

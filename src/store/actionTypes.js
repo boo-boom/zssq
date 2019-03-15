@@ -4,3 +4,7 @@ export const GET_SEARCH_RECOMMEND = 'GET_SEARCH_RECOMMEND';   // 获取搜索推
 export const GET_SEARCH_ALL = 'GET_SEARCH_ALL';   // 获取搜索页展示数据
 export const GET_SEARCH_SUGGEST = 'GET_SEARCH_SUGGEST';   // 关键词联想
 export const SET_CLEAN_SUGGEST = 'SET_CLEAN_SUGGEST';   // 清空联想词
+export const GET_SEARCH_RESULT = 'GET_SEARCH_RESULT';   // 获取搜索结果
+export const SET_CLEAN_RESULT = 'SET_CLEAN_RESULT';   // 清空搜索结果
+export const GET_BOOK_OTHER = 'GET_BOOK_OTHER';   // 获取搜索结果建议
+export const SET_SHOW_SEARCH_RESULT = 'SET_SHOW_SEARCH_RESULT';   // 设置搜索结果显示隐藏

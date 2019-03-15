@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { devDebug } from '@assets/js/utils';
 import Loadable from "./Loadable";
 import TabBar from '@components/TabBar';
 
@@ -10,6 +11,7 @@ const Find = Loadable(() => import(/* webpackChunkName:"find" */ "@views/find"))
 const Classify = Loadable(() => import(/* webpackChunkName:"classify" */ "@views/classify"));
 const Search = Loadable(() => import(/* webpackChunkName:"search" */ "@views/search"));
 
+devDebug();
 const Routes = () => (
   <BrowserRouter>
     <Fragment>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import store from '@store'
-import Routes from '@route';
+import Routes from '@routes';
 import '@assets/style/App.scss';
 
 class App extends Component {
