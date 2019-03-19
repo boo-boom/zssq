@@ -1,6 +1,6 @@
 .book-list {
   .cart-1-4, .cart-1-1 {
-    padding: 30px;
+    padding: 30px 0;
     overflow: hidden;
     .item-1 {
       display: flex;
@@ -58,6 +58,10 @@
               font-size: 18px;
               color: $gray_3;
               background: $gray_1;
+            }
+            .red {
+              color: $red_4;
+              background: $red_3;
             }
           }
         }

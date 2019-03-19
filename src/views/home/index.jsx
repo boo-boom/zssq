@@ -61,7 +61,9 @@ class Home extends Component {
                     <Fragment key={item.order}>
                       <Blank/>
                       <CartBox title={item.title}>
-                        {<BookList type={item.bookType==='1加4'?'1-4':'1-1'} data={item.bookType==='1加4'?item.books:item.books.slice(0, 1)}/>}
+                        <div className="book-list-content">
+                          {<BookList type={item.bookType==='1加4'?'1-4':'1-1'} tag="text" data={item.bookType==='1加4'?item.books:item.books.slice(0, 1)}/>}
+                        </div>
                       </CartBox>
                     </Fragment>
                   )

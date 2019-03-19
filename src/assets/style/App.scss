@@ -20,6 +20,10 @@ a:active {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.highlight {
+  color: $red_1;
+}
+
 .line-clamp1 {
   overflow: hidden;
   text-overflow: ellipsis;

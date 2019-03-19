@@ -13,6 +13,28 @@ export const formatNumUnit = (num) => {
   return `${newNum}字`;
 }
 
+export const formatScore = (num) => {
+  const newNum = Number(num)
+  if(newNum > 0) {
+    return Math.round(newNum * 10) / 10
+  } else {
+    return '0.00'
+  }
+}
+
+export const highlight = (str, highArr) => {
+  // console.log(str, highArr)
+  const strArr = str.split('')
+  for (let i = 0; i < strArr.length; i++) {
+    for (let j = 0; j < highArr.length; j++) {
+      if (strArr[i] === highArr[j]) {
+        strArr.splice(i, 1, `<span class="highlight">${strArr[i]}</span>`)
+      }
+    }
+  }
+  return strArr.join('')
+}
+
 export const debounce = (func, delay) => {
   var timer = null;
   return function () {

@@ -164,12 +164,22 @@
     right: 0;
     padding-top: 30px;
     background: $white;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    // overflow-y: scroll;
+    // -webkit-overflow-scrolling: touch;
+    .tab {
+      flex: 0 0 90px;
+      height: 90px;
+    }
     .btns {
+      flex: 0 0 100px;
+      height: 100px;
       display: flex;
       justify-content: space-between;
       padding: 20px 30px;
+      position: relative;
       @include border(after, bottom);
       .btn {
         flex: 0 0 calc(50% - 15px);
@@ -220,6 +230,24 @@
           padding: 6px 10px;
           margin-right: 10px;
           border-radius: 17px;
+        }
+      }
+      .load {
+        padding: 30px 0;
+        font-size: 24px;
+        color: $gray_5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          padding: 0 30px;
+        }
+        &::before,&::after {
+          content: '';
+          display: block;
+          height: 1px;
+          width: 100px;
+          background: $gray_5;
         }
       }
     }

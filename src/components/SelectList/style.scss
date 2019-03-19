@@ -1,0 +1,48 @@
+.select-list {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 30px 10px;
+  background: $white;
+  // transition: all .2s;
+  // transform: translate3d(0, -100%, 0);
+  .list {
+    color: $gray_3;
+    font-size: 30px;
+    .item {
+      display: flex;
+      align-items: center;
+      height: 90px;
+      @include border(after, bottom);
+      display: flex;
+      justify-content: space-between;
+    }
+    .cur {
+      color: $red_4;
+    }
+  }
+  &.show {
+    animation: show .3s ease-out;
+  }
+  &.hide {
+    animation: show .3s ease-in;
+  }
+  @keyframes show {
+    0% {
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes hide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+}

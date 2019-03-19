@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { debounce } from '@assets/js/utils';
 import {
@@ -9,15 +9,16 @@ import {
   setCleanResult,
   getBooksOther,
   setShowSearchResult,
- } from './reducer';
+} from './reducer';
 import Loading from '@components/Loading';
 import Tab from '@components/Tab';
 import BookList from '@components/BookList';
-// import SelectList from '@components/SelectList';
+import ScrollView from '@components/ScrollView';
+import SelectList from '@components/SelectList';
 import './style.scss';
 
 @connect(
-  state => ({search: state.search}),
+  state => ({ search: state.search }),
   {
     getSearchAll,
     getSearchSuggest,
@@ -35,12 +36,16 @@ class Search extends Component {
       searchValue: '',
       searchHistory: [],
       tabs: [
-        {id: 1, title: '书籍', type: 1},
-        {id: 2, title: '漫画', type: 2},
-        {id: 3, title: '书单'},
-        {id: 4, title: '社区'}
+        { id: 1, title: '书籍', type: 1 },
+        { id: 2, title: '漫画', type: 2 },
+        { id: 3, title: '书单' },
+        { id: 4, title: '社区' }
       ],
       tabCurIndex: 0,
+      start: 0,
+      limit: 20,
+      hasmore: true,
+      showSort: false,
     }
     this.changeSearch = this.changeSearch.bind(this);
     this.goIndex = this.goIndex.bind(this);
@@ -48,6 +53,7 @@ class Search extends Component {
     this.searchSubmit = this.searchSubmit.bind(this);
     this.cleanLocal = this.cleanLocal.bind(this);
     this.handleGetTabIndex = this.handleGetTabIndex.bind(this);
+    this.loadCallback = this.loadCallback.bind(this);
   }
   componentWillMount() {
     // 搜索框防抖
@@ -56,7 +62,7 @@ class Search extends Component {
       this.props.setShowSearchResult(false)
       // 清空搜素结果
       this.props.setCleanResult()
-      if(this.state.searchValue) {
+      if (this.state.searchValue) {
         this.props.getSearchSuggest(this.state.searchValue)
       } else {
         // 清空联想词列表
@@ -66,6 +72,12 @@ class Search extends Component {
     this.props.getSearchAll();
     this.setState({
       searchHistory: JSON.parse(localStorage.getItem('searchHistory')) || []
+    })
+  }
+  componentWillUnmount() {
+    this.cleanAllState()
+    this.setState({
+      start: 0
     })
   }
   // 搜索框
@@ -80,24 +92,32 @@ class Search extends Component {
     this.setState({
       searchValue: ''
     }, () => {
-      // 清空联想词列表
-      this.props.setCleanSuggest()
-      // 清空搜素结果
-      this.props.setCleanResult()
-      // 隐藏搜索结果列表
-      this.props.setShowSearchResult(false)
+      this.cleanAllState()
+    })
+  }
+  // 清空全部状态
+  cleanAllState() {
+    // 清空联想词列表
+    this.props.setCleanSuggest()
+    // 清空搜素结果
+    this.props.setCleanResult()
+    // 隐藏搜索结果列表
+    this.props.setShowSearchResult(false)
+    this.setState({
+      hasmore: true,
+      tabCurIndex: 0,
     })
   }
   // 历史记录
   searchSubmit(e) {
     const value = this.refs.searchInput.value;
     const searchHistory = this.state.searchHistory;
-    if(value) {
-      if(searchHistory.indexOf(value) !== -1) {
+    if (value) {
+      if (searchHistory.indexOf(value) !== -1) {
         searchHistory.splice(searchHistory.indexOf(value), 1);
       }
-      if(searchHistory.length >= 5) {
-        searchHistory.splice(searchHistory.length-1, 1);
+      if (searchHistory.length >= 5) {
+        searchHistory.splice(searchHistory.length - 1, 1);
       }
       searchHistory.unshift(value);
       localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
@@ -122,18 +142,34 @@ class Search extends Component {
   }
   // 获取tab的索引
   handleGetTabIndex(index) {
+    if(this.state.tabCurIndex === index) return;
     this.setState({
-      tabCurIndex: index
+      tabCurIndex: index,
+      start: 0
     })
     const state = this.state;
-    if(state.tabs[index].type === 1 || state.tabs[index].type === 2) {
+    if (state.tabs[index].type === 1 || state.tabs[index].type === 2) {
       this.props.setCleanResult()
-      this.props.getSearchResult(state.searchValue, state.tabs[index].type);
+      this.props.getSearchResult({
+        keyword: state.searchValue,
+        start: state.start,
+        limit: state.limit,
+        type: state.tabs[index].type
+      }).then(res => {
+        this.setState({
+          hasmore: res.total > (this.state.start + this.state.limit) ? true : false
+        })
+      });
     }
   }
   // 获取搜索结果
   getResult(keyword) {
-    this.props.getSearchResult(keyword, this.state.tabs[0].type);
+    this.props.getSearchResult({
+      keyword,
+      start: this.state.start,
+      limit: this.state.limit,
+      type: this.state.tabs[0].type
+    });
     this.props.getBooksOther(keyword);
     // 清空联想词列表
     this.props.setCleanSuggest()
@@ -141,62 +177,89 @@ class Search extends Component {
       searchValue: keyword
     })
   }
+  // 滚动加载
+  loadCallback() {
+    if(!this.state.hasmore) return;
+    this.setState({
+      start: this.state.start + this.state.limit,
+    })
+    this.props.getSearchResult({
+      keyword: this.state.searchValue,
+      start: this.state.start,
+      limit: this.state.limit,
+      type: this.state.tabs[this.state.tabCurIndex].type
+    }).then(res => {
+      this.setState({
+        hasmore: res.total > (this.state.start + this.state.limit) ? true : false
+      })
+    });
+    console.log('到底了...')
+  }
+  // 排序
+  handleSort() {
+    this.setState({
+      showSort: !this.state.showSort
+    })
+  }
   // 创建搜索结果dom
   creatResultContent() {
+    const tabId = this.state.tabs[this.state.tabCurIndex].id;
     const search = this.props.search;
     const searchResult = search.searchResult;   // 搜索结果
     const bookSuggest = search.bookSuggest;   // 搜索结果书籍建议
     return (
       <div className="result-content">
-        <Tab data={this.state.tabs} curIndex={this.handleGetTabIndex}/>
+        <Tab data={this.state.tabs} curIndex={this.handleGetTabIndex} />
         {
-          this.state.tabs[this.state.tabCurIndex].id===1 ?
-          <Fragment>
-            <div className="btns">
-              <div className="btn cur">
+          tabId === 1
+          ? <div className="btns">
+              <div className="btn cur" onClick={this.handleSort.bind(this)}>
                 <span className="text">按综合</span>
                 <span className="iconfont iconarrowll-t"></span>
               </div>
+              {this.state.showSort ?  <SelectList/> : null}
               <div className="btn">
                 <span className="text">筛选</span>
                 <span className="iconfont iconarrowll-b"></span>
               </div>
             </div>
-            {/* <SelectList/> */}
-            <div className="result-list">
-              {
-                bookSuggest.map((item, index) => {
-                  if(index < 3) {
-                    return (
-                      <div className="type" key={`${item.text}_${index}`}>
-                        <span className={`iconfont
-                          ${
-                            item.tag==='bookauthor'?
-                            'iconuserline':
-                            item.tag==='cat'?
-                            'iconfenlei':
-                            item.tag==='tag'?
-                            'iconshuqian':
-                            'iconshuqianline'
-                          }`}></span>
-                        <span className="title">{item.text}</span>
-                        {item.tag === "bookauthor" ? <span className="tag">作者</span> : null}
-                        {item.tag === "cat" ? <span className="tag">分类</span> : null}
-                        {item.tag === "tag" ? <span className="tag">标签</span> : null}
-                        {item.gender === "male" ? <span className="tag">男频</span> : null}
-                        {item.gender === "female" ? <span className="tag">女频</span> : null}
-                      </div>
-                    )
-                  } else {
-                    return null
-                  }
-                })
-              }
-            </div>
-          </Fragment> :
-          null
+          : null
         }
-        {<BookList type={'1-1'} data={searchResult}/>}
+        <ScrollView loadCallback={this.loadCallback}>
+          <div className="result-list">
+            {
+              tabId === 1 && bookSuggest.map((item, index) => {
+                if (index < 3 && item.tag !== 'bookname') {
+                  return (
+                    <div className="type" key={`${item.text}_${index}`}>
+                      <span className={`iconfont
+                          ${
+                            item.tag === 'bookauthor' ?
+                            'iconuserline' :
+                            item.tag === 'cat' ?
+                            'iconfenlei' :
+                            item.tag === 'tag' ?
+                            'iconshuqian' :
+                            'iconshuqianline'
+                          }`}>
+                      </span>
+                      <span className="title">{item.text}</span>
+                      {item.tag === "bookauthor" ? <span className="tag">作者</span> : null}
+                      {item.tag === "cat" ? <span className="tag">分类</span> : null}
+                      {item.tag === "tag" ? <span className="tag">标签</span> : null}
+                      {item.gender === "male" ? <span className="tag">男频</span> : null}
+                      {item.gender === "female" ? <span className="tag">女频</span> : null}
+                    </div>
+                  )
+                } else {
+                  return null
+                }
+              })
+            }
+            <BookList type={'1-1'} tag="score" data={searchResult} />
+            {!this.state.hasmore ? <div className="load"><span>没有更多</span></div> : null}
+          </div>
+        </ScrollView>
       </div>
     )
   }
@@ -208,9 +271,9 @@ class Search extends Component {
     const hotRecommend = search.hotRecommend;   // 搜索推荐
     const searchSuggest = search.searchSuggest;   // 搜索联想
     const showList = searchSuggest.length ? true : false;   // 是否显示联想词列表
-    return(
+    return (
       loadEnd
-      ? <div className="search">
+        ? <div className="search">
           <div className="search-input">
             <div className="input">
               <form action="" onSubmit={this.searchSubmit}>
@@ -220,7 +283,7 @@ class Search extends Component {
                   maxLength="30"
                   placeholder={searchRecommend.title}
                   value={this.state.searchValue}
-                  onChange={this.changeSearch}/>
+                  onChange={this.changeSearch} />
               </form>
               {this.state.searchValue ? <span className="iconfont iconshanchu" onClick={this.cleanInput}></span> : null}
             </div>
@@ -237,7 +300,7 @@ class Search extends Component {
             <ul className="keyword">
               {
                 searchHotWords.map(item => {
-                  return (<li key={item.word} onClick={this.getResult.bind(this,item.word)}>{item.word}</li>)
+                  return (<li key={item.word} onClick={this.getResult.bind(this, item.word)}>{item.word}</li>)
                 })
               }
             </ul>
@@ -265,28 +328,28 @@ class Search extends Component {
           </div>
           {
             this.state.searchHistory.length ?
-            <div className="search-history">
-              <div className="title">
-                <div className="left">搜索历史</div>
-                <div className="right" onClick={this.cleanLocal}>
-                  <span className="more">删除历史</span>
-                  <span className="iconfont icondel"></span>
+              <div className="search-history">
+                <div className="title">
+                  <div className="left">搜索历史</div>
+                  <div className="right" onClick={this.cleanLocal}>
+                    <span className="more">删除历史</span>
+                    <span className="iconfont icondel"></span>
+                  </div>
                 </div>
-              </div>
-              <ul className="keyword">
-                {
-                  this.state.searchHistory.map((item,index) => {
-                    return (
-                      <li key={`${item}_${index}`}>
-                        <span className="iconfont iconshijian"></span>
-                        <span>{item}</span>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div> :
-            null
+                <ul className="keyword">
+                  {
+                    this.state.searchHistory.map((item, index) => {
+                      return (
+                        <li key={`${item}_${index}`}>
+                          <span className="iconfont iconshijian"></span>
+                          <span>{item}</span>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div> :
+              null
           }
           {/* 联想词结果 */}
           <div className={`keyword-list ${showList || 'hide'}`}>
@@ -294,28 +357,29 @@ class Search extends Component {
               {
                 searchSuggest.length && searchSuggest.map(item => {
                   let creatItems = [];
-                    creatItems.push(
-                      <li className="item" key={`${item.url}`} onClick={this.getResult.bind(this,item.text)}>
-                        <span className={`iconfont
-                          ${
-                            item.tag==='bookauthor'?
-                            'iconuserline':
-                            item.tag==='cat'?
-                            'iconfenlei':
-                            item.tag==='tag'?
-                            'iconshuqian':
-                            'iconshuqianline'
-                          }`}></span>
-                        <span className="name">
-                          {item.text}
-                          {item.tag === "bookauthor" ? <small>作者</small> : null}
-                          {item.tag === "cat" ? <small>分类</small> : null}
-                          {item.tag === "tag" ? <small>标签</small> : null}
-                          {item.gender === "male" ? <small>男频</small> : null}
-                          {item.gender === "female" ? <small>女频</small> : null}
-                        </span>
-                      </li>
-                    )
+                  creatItems.push(
+                    <li className="item" key={`${item.url}`} onClick={this.getResult.bind(this, item.text)}>
+                      <span className={`iconfont
+                        ${
+                          item.tag === 'bookauthor' ?
+                          'iconuserline' :
+                          item.tag === 'cat' ?
+                          'iconfenlei' :
+                          item.tag === 'tag' ?
+                          'iconshuqian' :
+                          'iconshuqianline'
+                        }`}>
+                      </span>
+                      <span className="name">
+                        {item.text}
+                        {item.tag === "bookauthor" ? <small>作者</small> : null}
+                        {item.tag === "cat" ? <small>分类</small> : null}
+                        {item.tag === "tag" ? <small>标签</small> : null}
+                        {item.gender === "male" ? <small>男频</small> : null}
+                        {item.gender === "female" ? <small>女频</small> : null}
+                      </span>
+                    </li>
+                  )
                   return (creatItems)
                 })
               }
@@ -324,7 +388,7 @@ class Search extends Component {
           {/* 搜索结果 */}
           {this.props.search.showSearchResult ? this.creatResultContent() : null}
         </div>
-      : <Loading/>
+        : <Loading />
     )
   }
 }

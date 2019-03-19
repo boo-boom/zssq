@@ -18,6 +18,7 @@ const stateDefault = {
   searchResult: [],
   bookSuggest: [],
   showSearchResult: false,
+  resultTotal: 0,
 }
 
 export function search(state=stateDefault, action) {
@@ -87,38 +88,48 @@ export const setCleanSuggest = () => {
   }
 }
 
-export const getSearchResult = (keyword, contentType) => {
-  return dispatch => {
+export const getSearchResult = (opt) => {
+  return (dispatch, getState) => {
     // 在action中调用action
     // 1. setCleanResult()(dispatch)
     // 2. dispatch({
     //      type: SET_CLEAN_RESULT,
     //      searchResult: []
     //    })
-    $axios({
-      url: '/search_result',
-      data: {
-        keyword: keyword,
-        start: 0,
-        limit: 2,
-        type: contentType
+    return new Promise((resolve, reject) => {
+      const data = {
+        keyword: opt.keyword,
+        start: opt.start || 0,
+        limit: opt.limit || 10,
+        type: opt.type || 1
       }
-    }).then(res => {
-      if (res.ok) {
-        dispatch({
-          type: GET_SEARCH_RESULT,
-          searchResult: res.books,
-          showSearchResult: true,
-        })
-      }
+      const _searchResult = getState().search.searchResult;
+      $axios({
+        url: '/search_result',
+        data
+      }).then(res => {
+        resolve(res)
+        if (res.ok) {
+          dispatch({
+            type: GET_SEARCH_RESULT,
+            searchResult: [..._searchResult, ...res.books],
+            showSearchResult: true,
+            resultTotal: res.total,
+          })
+        }
+      }).catch(err => {
+        reject(err)
+      })
     })
   }
 }
+
 export const setCleanResult = () => {
   return dispatch => {
     dispatch({
       type: SET_CLEAN_RESULT,
-      searchResult: []
+      searchResult: [],
+      resultHasmore: true,
     })
   }
 }
