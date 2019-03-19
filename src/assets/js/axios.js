@@ -4,7 +4,7 @@ const formatParams = (opt) => {
   const requestData = {
     url: opt.url,
     method: opt.method || 'get',
-    baseURL: `http://192.168.140.73:3005/api`
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://192.168.140.73:3005/api' : 'http://zssq.hoohmm.com/api'
   }
   if (requestData.method === 'get') {
     requestData.params = opt.data;
