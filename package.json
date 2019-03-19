@@ -66,7 +66,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "commit": "git add . && git commit -m 'deploy' && git push origin master",
-    "deploy": "yarn build && ssh ubuntu@140.143.239.240 rm -rf /home/ubuntu/www/public/zssq/build && scp -r ./build/ ubuntu@140.143.239.240:/home/ubuntu/www/public/zssq"
+    "deploy": "yarn commit && yarn build && ssh ubuntu@140.143.239.240 rm -rf /home/ubuntu/www/public/zssq/build && scp -r ./build/ ubuntu@140.143.239.240:/home/ubuntu/www/public/zssq"
   },
   "eslintConfig": {
     "extends": "react-app"
