@@ -54,7 +54,7 @@ class Search extends Component {
     this.searchSubmit = this.searchSubmit.bind(this);
     this.cleanLocal = this.cleanLocal.bind(this);
     this.handleGetTabIndex = this.handleGetTabIndex.bind(this);
-    this.loadCallback = this.loadCallback.bind(this);
+    this.pullup = this.pullup.bind(this);
   }
   componentWillMount() {
     // 搜索框防抖
@@ -179,7 +179,7 @@ class Search extends Component {
     })
   }
   // 滚动加载
-  loadCallback() {
+  pullup() {
     if(!this.state.hasmore) return;
     this.setState({
       start: this.state.start + this.state.limit,
@@ -259,7 +259,7 @@ class Search extends Component {
           <SelectList show={showSort} handleClick={this.handleSort.bind(this)}/>
           : null
         }
-        <ScrollView loadCallback={this.loadCallback}>
+        <ScrollView pullup={this.pullup}>
           <div className="result-list">
             {
               tabId === 1 && bookSuggest.map((item, index) => {

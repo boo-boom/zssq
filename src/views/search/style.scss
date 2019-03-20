@@ -183,7 +183,8 @@
       z-index: 3;
     }
     .scroll-view {
-      position: relative;
+      flex: 1;
+      overflow: hidden;
     }
     .btns {
       flex: 0 0 100px;
