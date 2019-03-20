@@ -5,6 +5,9 @@
     align-items: center;
     height: 100px;
     padding-bottom: 30px;
+    position: relative;
+    z-index: 2;
+    background: $white;
     @include border(after, bottom);
     .input {
       flex: 1;
@@ -130,6 +133,9 @@
     background: $white;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    &.hide {
+      display: none;
+    }
     li {
       font-size: 30px;
       padding: 30px 0;
@@ -172,6 +178,12 @@
     .tab {
       flex: 0 0 90px;
       height: 90px;
+      position: relative;
+      background: $white;
+      z-index: 3;
+    }
+    .scroll-view {
+      position: relative;
     }
     .btns {
       flex: 0 0 100px;
@@ -179,7 +191,9 @@
       display: flex;
       justify-content: space-between;
       padding: 20px 30px;
+      background: $white;
       position: relative;
+      z-index: 2;
       @include border(after, bottom);
       .btn {
         flex: 0 0 calc(50% - 15px);
@@ -193,6 +207,8 @@
         justify-content: space-between;
         align-items: center;
         border-radius: 10px;
+        position: relative;
+        z-index: 3;
         .iconfont {
           font-size: 26px;
         }
@@ -251,8 +267,5 @@
         }
       }
     }
-  }
-  .hide {
-    display: none;
   }
 }

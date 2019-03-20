@@ -1225,6 +1225,11 @@ amdefine@>=0.0.4:
   resolved "http://registry.npm.taobao.org/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+animate.css@^3.7.0:
+  version "3.7.0"
+  resolved "http://registry.npm.taobao.org/animate.css/download/animate.css-3.7.0.tgz#5de25d1ee5fba11ba6a1e2c4fa568f512eb7d4da"
+  integrity sha1-XeJdHuX7oRumoeLE+laPUS631No=
+
 ansi-colors@^3.0.0:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.3.tgz#57d35b8686e851e2cc04c403f1c00203976a1813"
@@ -1601,7 +1606,7 @@ babel-preset-react-app@^7.0.1:
     babel-plugin-macros "2.5.0"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
 
-babel-runtime@^6.26.0:
+babel-runtime@^6.0.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -1653,6 +1658,13 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+better-scroll@^1.15.0:
+  version "1.15.0"
+  resolved "http://registry.npm.taobao.org/better-scroll/download/better-scroll-1.15.0.tgz#bdfb6ab3322eeb6ab7f40b4bda38c52736624b90"
+  integrity sha1-vftqszIu62q39AtL2jjFJzZiS5A=
+  dependencies:
+    babel-runtime "^6.0.0"
 
 bfj@6.1.1:
   version "6.1.1"

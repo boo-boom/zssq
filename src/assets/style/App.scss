@@ -50,3 +50,8 @@ a:active {
   /* autoprefixer: ignore next */
   -webkit-box-orient: vertical;
 }
+
+.modal-open {
+  position: fixed;
+  // width: 100%;
+}

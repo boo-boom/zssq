@@ -53,3 +53,22 @@ export const devDebug = () => {
     new VConsole();
   }
 }
+
+//解决滚动穿透
+
+export const ModalHelper = (function(bodyCls) {
+  var scrollTop;
+  return {
+    afterOpen: function(dom) {
+      const _dom = document.querySelector(dom);
+      scrollTop = _dom.scrollTop;
+      _dom.classList.add(bodyCls);
+      _dom.style.top = -scrollTop + 'px';
+    },
+    beforeClose: function(dom) {
+      const _dom = document.querySelector(dom);
+      _dom.classList.remove(bodyCls);
+      _dom.scrollTop = scrollTop;
+    }
+  };
+})('modal-open')

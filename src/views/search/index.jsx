@@ -46,6 +46,7 @@ class Search extends Component {
       limit: 20,
       hasmore: true,
       showSort: false,
+      sortOrFilter: '',
     }
     this.changeSearch = this.changeSearch.bind(this);
     this.goIndex = this.goIndex.bind(this);
@@ -195,10 +196,37 @@ class Search extends Component {
     });
     console.log('到底了...')
   }
+  // 排序/筛选
+  handleSortFilter(type) {
+    if(type === 'sort') {
+      this.setState({
+        showSort: !this.state.showSort,
+        sortOrFilter: type
+      })
+    } else {
+      this.setState({
+        showSort: false,
+        sortOrFilter: type
+      })
+    }
+    // if(this.state.showSort) {
+    //   ModalHelper.beforeClose('.result-list')
+    // } else {
+    //   ModalHelper.afterOpen('.result-list')
+    // }
+  }
   // 排序
-  handleSort() {
+  handleSort(index) {
+    // ModalHelper.beforeClose('.result-list')
+    this.props.getSearchResult({
+      keyword: this.state.searchValue,
+      start: this.state.start,
+      limit: this.state.limit,
+      type: this.state.tabs[this.state.tabCurIndex].type,
+      sort: index + 1
+    }, true);
     this.setState({
-      showSort: !this.state.showSort
+      showSort: false
     })
   }
   // 创建搜索结果dom
@@ -207,22 +235,28 @@ class Search extends Component {
     const search = this.props.search;
     const searchResult = search.searchResult;   // 搜索结果
     const bookSuggest = search.bookSuggest;   // 搜索结果书籍建议
+    const sortOrFilter = this.state.sortOrFilter;
+    const showSort = this.state.showSort;
     return (
       <div className="result-content">
         <Tab data={this.state.tabs} curIndex={this.handleGetTabIndex} />
         {
           tabId === 1
           ? <div className="btns">
-              <div className="btn cur" onClick={this.handleSort.bind(this)}>
+              <div className={`btn ${sortOrFilter==='sort'&&showSort?'cur':''}`} onClick={this.handleSortFilter.bind(this,'sort')}>
                 <span className="text">按综合</span>
-                <span className="iconfont iconarrowll-t"></span>
+                <span className={`iconfont iconarrowll-${sortOrFilter==='sort'&&showSort?'b':'t'}`}></span>
               </div>
-              {this.state.showSort ?  <SelectList/> : null}
-              <div className="btn">
+              <div className={`btn ${sortOrFilter==='filter'&&!showSort?'cur':''}`} onClick={this.handleSortFilter.bind(this,'filter')}>
                 <span className="text">筛选</span>
-                <span className="iconfont iconarrowll-b"></span>
+                <span className={`iconfont iconarrowll-${sortOrFilter==='filter'&&!showSort?'b':'t'}`}></span>
               </div>
             </div>
+          : null
+        }
+        {
+          tabId === 1 ?
+          <SelectList show={showSort} handleClick={this.handleSort.bind(this)}/>
           : null
         }
         <ScrollView loadCallback={this.loadCallback}>

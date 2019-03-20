@@ -1,16 +1,15 @@
 .select-list {
   position: absolute;
-  top: 100px;
+  top: 218px;
   left: 0;
   right: 0;
-  z-index: 2;
-  padding: 0 30px 10px;
-  background: $white;
-  // transition: all .2s;
-  // transform: translate3d(0, -100%, 0);
+  bottom: 0;
+  z-index: 1;
   .list {
     color: $gray_3;
     font-size: 30px;
+    padding: 0 30px 10px;
+    background: $white;
     .item {
       display: flex;
       align-items: center;
@@ -24,25 +23,9 @@
     }
   }
   &.show {
-    animation: show .3s ease-out;
+    direction: block;
   }
   &.hide {
-    animation: show .3s ease-in;
-  }
-  @keyframes show {
-    0% {
-      transform: translate3d(0, -100%, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  @keyframes hide {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(0, -100%, 0);
-    }
+    display: none;
   }
 }

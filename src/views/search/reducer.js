@@ -88,7 +88,7 @@ export const setCleanSuggest = () => {
   }
 }
 
-export const getSearchResult = (opt) => {
+export const getSearchResult = (opt, isClean) => {
   return (dispatch, getState) => {
     // 在action中调用action
     // 1. setCleanResult()(dispatch)
@@ -103,6 +103,7 @@ export const getSearchResult = (opt) => {
         limit: opt.limit || 10,
         type: opt.type || 1
       }
+      if(opt.sort) data.sort = opt.sort;
       const _searchResult = getState().search.searchResult;
       $axios({
         url: '/search_result',
@@ -112,7 +113,7 @@ export const getSearchResult = (opt) => {
         if (res.ok) {
           dispatch({
             type: GET_SEARCH_RESULT,
-            searchResult: [..._searchResult, ...res.books],
+            searchResult: isClean ? res.books : [..._searchResult, ...res.books],
             showSearchResult: true,
             resultTotal: res.total,
           })
