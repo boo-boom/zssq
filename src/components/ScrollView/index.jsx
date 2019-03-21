@@ -4,6 +4,14 @@ import { debounce } from '@assets/js/utils';
 import './style.scss'
 
 class ScrollView extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.children === this.props.children) {
+      return false
+    } else {
+      this.scroll && this.scroll.refresh();
+      return true
+    }
+  }
   componentWillMount() {
     // 防抖处理
     this.pullup = debounce(() => {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { debounce } from '@assets/js/utils';
 import {
@@ -9,12 +9,14 @@ import {
   setCleanResult,
   getBooksOther,
   setShowSearchResult,
+  getCateTag,
 } from './reducer';
 import Loading from '@components/Loading';
 import Tab from '@components/Tab';
 import BookList from '@components/BookList';
 import ScrollView from '@components/ScrollView';
 import SelectList from '@components/SelectList';
+import SearchFilter from '@components/SearchFilter';
 import './style.scss';
 
 @connect(
@@ -27,6 +29,7 @@ import './style.scss';
     setCleanResult,
     getBooksOther,
     setShowSearchResult,
+    getCateTag,
   }
 )
 class Search extends Component {
@@ -45,8 +48,37 @@ class Search extends Component {
       start: 0,
       limit: 20,
       hasmore: true,
+      sortList: [
+        {id: 1, name: '按综合', type: 'cate'},
+        {id: 2, name: '按人气', type: 'pop'},
+        {id: 3, name: '按留存', type: 'ratio'},
+        {id: 4, name: '按评分', type: 'score'},
+        {id: 5, name: '按字数', type: 'text'},
+      ],
+      sortType: 'cate',
       showSort: false,
+      showFilter: false,
       sortOrFilter: '',
+      // 做多每项选择3个，用逗号分割拼接
+      filterList: [
+        {title: '分类', type: 'cate', isMult: true, list: []},
+        {title: '标签', type: 'tag', isMult: true, list: []},
+        {title: '状态', type: 'status', isMult: false, list: [
+          {text: '连载', param: true, active: false},
+          {text: '完结', param: false, active: false},
+        ]},
+        {title: '价格', type: 'price', isMult: false, list: [
+          {text: 'VIP', param: '2', active: false},
+          {text: '付费', param: '3', active: false},
+        ]},
+        {title: '字数', type: 'num', isMult: true, list: [
+          {text: '20万字内', param: 1, active: false},
+          {text: '20万-50万字', param: 2, active: false},
+          {text: '50万-100万字', param: 3, active: false},
+          {text: '100万-200万字', param: 4, active: false},
+          {text: '200万字以上', param: 5, active: false},
+        ]},
+      ]
     }
     this.changeSearch = this.changeSearch.bind(this);
     this.goIndex = this.goIndex.bind(this);
@@ -201,33 +233,50 @@ class Search extends Component {
     if(type === 'sort') {
       this.setState({
         showSort: !this.state.showSort,
+        showFilter: false,
         sortOrFilter: type
       })
     } else {
+      this.props.getCateTag([
+        {
+          query: this.state.searchValue,
+          limit: 15,
+          type: this.state.tabs[this.state.tabCurIndex].type
+        }
+      ]).then(res => {
+        const filterList = this.state.filterList;
+        filterList[0].list = res[0];
+        filterList[1].list = res[1];
+        this.setState({
+          filterList
+        })
+      });
       this.setState({
+        showFilter: !this.state.showFilter,
         showSort: false,
         sortOrFilter: type
       })
     }
-    // if(this.state.showSort) {
-    //   ModalHelper.beforeClose('.result-list')
-    // } else {
-    //   ModalHelper.afterOpen('.result-list')
-    // }
   }
   // 排序
   handleSort(index) {
-    // ModalHelper.beforeClose('.result-list')
-    this.props.getSearchResult({
-      keyword: this.state.searchValue,
-      start: this.state.start,
-      limit: this.state.limit,
-      type: this.state.tabs[this.state.tabCurIndex].type,
-      sort: index + 1
-    }, true);
     this.setState({
-      showSort: false
+      showSort: false,
+      start: 0,
+      sortType: this.state.sortList[index].type
+    }, () => {
+      this.props.getSearchResult({
+        keyword: this.state.searchValue,
+        start: this.state.start,
+        limit: this.state.limit,
+        type: this.state.tabs[this.state.tabCurIndex].type,
+        sort: index + 1
+      }, true);
     })
+  }
+  // 筛选
+  handleFilter(filter) {
+    console.log(filter)
   }
   // 创建搜索结果dom
   creatResultContent() {
@@ -235,8 +284,14 @@ class Search extends Component {
     const search = this.props.search;
     const searchResult = search.searchResult;   // 搜索结果
     const bookSuggest = search.bookSuggest;   // 搜索结果书籍建议
-    const sortOrFilter = this.state.sortOrFilter;
-    const showSort = this.state.showSort;
+    const state = this.state;
+    const sortOrFilter = state.sortOrFilter;
+    const showSort = state.showSort;
+    const showFilter = state.showFilter;
+    const sortList = state.sortList;
+    const sortType = state.sortType;
+    const filterList = state.filterList;
+    // console.log(filterList)
     return (
       <div className="result-content">
         <Tab data={this.state.tabs} curIndex={this.handleGetTabIndex} />
@@ -247,16 +302,19 @@ class Search extends Component {
                 <span className="text">按综合</span>
                 <span className={`iconfont iconarrowll-${sortOrFilter==='sort'&&showSort?'b':'t'}`}></span>
               </div>
-              <div className={`btn ${sortOrFilter==='filter'&&!showSort?'cur':''}`} onClick={this.handleSortFilter.bind(this,'filter')}>
+              <div className={`btn ${sortOrFilter==='filter'&&showFilter?'cur':''}`} onClick={this.handleSortFilter.bind(this,'filter')}>
                 <span className="text">筛选</span>
-                <span className={`iconfont iconarrowll-${sortOrFilter==='filter'&&!showSort?'b':'t'}`}></span>
+                <span className={`iconfont iconarrowll-${sortOrFilter==='filter'&&showFilter?'b':'t'}`}></span>
               </div>
             </div>
           : null
         }
         {
           tabId === 1 ?
-          <SelectList show={showSort} handleClick={this.handleSort.bind(this)}/>
+          <Fragment>
+            {sortOrFilter === 'sort' && showSort ? <SelectList show={showSort} list={sortList} handleClick={this.handleSort.bind(this)}/> : null}
+            {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
+          </Fragment>
           : null
         }
         <ScrollView pullup={this.pullup}>
@@ -290,7 +348,7 @@ class Search extends Component {
                 }
               })
             }
-            <BookList type={'1-1'} tag="score" data={searchResult} />
+            <BookList type={'1-1'} tag={sortType} data={searchResult} />
             {!this.state.hasmore ? <div className="load"><span>没有更多</span></div> : null}
           </div>
         </ScrollView>

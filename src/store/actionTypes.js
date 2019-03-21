@@ -8,3 +8,5 @@ export const GET_SEARCH_RESULT = 'GET_SEARCH_RESULT';   // 获取搜索结果
 export const SET_CLEAN_RESULT = 'SET_CLEAN_RESULT';   // 清空搜索结果
 export const GET_BOOK_OTHER = 'GET_BOOK_OTHER';   // 获取搜索结果建议
 export const SET_SHOW_SEARCH_RESULT = 'SET_SHOW_SEARCH_RESULT';   // 设置搜索结果显示隐藏
+export const GET_SEARCH_CATE = 'GET_SEARCH_CATE';   // 根据关键字搜索分类
+export const GET_SEARCH_TAG = 'GET_SEARCH_TAG';   // 根据关键字搜索标签

@@ -74,9 +74,9 @@ class Home extends Component {
                 })
               }
               <Blank/>
-              <RecCard data={spread[3].advs}/>
+              {spread[3].advs.length ? <RecCard data={spread[3].advs}/> : null}
               <Blank/>
-              <HighCard data={bookList[0]}/>
+              {bookList[0].length ? <HighCard data={bookList[0]}/> : null}
             </div>
           : <Loading/>
         }

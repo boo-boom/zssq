@@ -7,6 +7,8 @@ import {
   SET_CLEAN_RESULT,
   GET_BOOK_OTHER,
   SET_SHOW_SEARCH_RESULT,
+  GET_SEARCH_CATE,
+  GET_SEARCH_TAG,
 } from '@store/actionTypes';
 
 const stateDefault = {
@@ -19,6 +21,8 @@ const stateDefault = {
   bookSuggest: [],
   showSearchResult: false,
   resultTotal: 0,
+  searchCate: [],
+  searchTag: [],
 }
 
 export function search(state=stateDefault, action) {
@@ -30,6 +34,8 @@ export function search(state=stateDefault, action) {
     case SET_CLEAN_RESULT:
     case GET_BOOK_OTHER:
     case SET_SHOW_SEARCH_RESULT:
+    case GET_SEARCH_CATE:
+    case GET_SEARCH_TAG:
       return {
         ...state,
         ...action
@@ -104,6 +110,12 @@ export const getSearchResult = (opt, isClean) => {
         type: opt.type || 1
       }
       if(opt.sort) data.sort = opt.sort;
+      if(opt.cat) data.cat = opt.cat;
+      if(opt.tag) data.tag = opt.tag;
+      if(opt.isserial) data.isserial = opt.isserial;
+      if(opt.price) data.price = opt.price;
+      if(opt.wordCount) data.wordCount = opt.wordCount;
+
       const _searchResult = getState().search.searchResult;
       $axios({
         url: '/search_result',
@@ -155,4 +167,49 @@ export const setShowSearchResult = (show) => {
       showSearchResult: show
     })
   }
+}
+
+export const getCateTag = (query) => {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      $axios([
+        {
+          url: '/search_category',
+          data: query[0]
+        },
+        {
+          url: '/search_tags',
+          data: query[0]
+        }
+      ]).then(res => {
+        const newRes = res.map((item, index) => {
+          return formatSearchArr(item.list)
+        })
+        resolve(newRes)
+        dispatch({
+          type: GET_SEARCH_CATE,
+          searchCate: formatSearchArr(res[0].list),
+          searchTag: formatSearchArr(res[1].list),
+        })
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  }
+}
+
+// 普通函数
+export function formatSearchArr(arr) {
+  const newArr = []
+  if(arr && arr.length) {
+    arr.forEach((item, index) => {
+      newArr.push({
+        text: item,
+        param: index,
+        active: false
+      })
+    })
+    return newArr;
+  }
+  return arr;
 }

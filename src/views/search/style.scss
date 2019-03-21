@@ -186,6 +186,14 @@
       flex: 1;
       overflow: hidden;
     }
+    .select-list, .search-filter {
+      position: absolute;
+      top: 218px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
     .btns {
       flex: 0 0 100px;
       height: 100px;
