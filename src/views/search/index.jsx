@@ -56,6 +56,7 @@ class Search extends Component {
         {id: 5, name: '按字数', type: 'text'},
       ],
       sortType: 'cate',
+      curSortIndex: 0,
       showSort: false,
       showFilter: false,
       sortOrFilter: '',
@@ -64,19 +65,19 @@ class Search extends Component {
         {title: '分类', type: 'cate', isMult: true, list: []},
         {title: '标签', type: 'tag', isMult: true, list: []},
         {title: '状态', type: 'status', isMult: false, list: [
-          {text: '连载', param: true, active: false},
-          {text: '完结', param: false, active: false},
+          {text: '连载', param: 'true', active: false},
+          {text: '完结', param: 'false', active: false},
         ]},
         {title: '价格', type: 'price', isMult: false, list: [
           {text: 'VIP', param: '2', active: false},
           {text: '付费', param: '3', active: false},
         ]},
         {title: '字数', type: 'num', isMult: true, list: [
-          {text: '20万字内', param: 1, active: false},
-          {text: '20万-50万字', param: 2, active: false},
-          {text: '50万-100万字', param: 3, active: false},
-          {text: '100万-200万字', param: 4, active: false},
-          {text: '200万字以上', param: 5, active: false},
+          {text: '20万字内', param: '1', active: false},
+          {text: '20万-50万字', param: '2', active: false},
+          {text: '50万-100万字', param: '3', active: false},
+          {text: '100万-200万字', param: '4', active: false},
+          {text: '200万字以上', param: '5', active: false},
         ]},
       ]
     }
@@ -139,6 +140,9 @@ class Search extends Component {
     this.setState({
       hasmore: true,
       tabCurIndex: 0,
+      curSortIndex: 0,
+      showSort: false,
+      showFilter: false,
     })
   }
   // 历史记录
@@ -263,20 +267,37 @@ class Search extends Component {
     this.setState({
       showSort: false,
       start: 0,
-      sortType: this.state.sortList[index].type
+      sortType: this.state.sortList[index].type,
+      curSortIndex: index,
     }, () => {
       this.props.getSearchResult({
         keyword: this.state.searchValue,
         start: this.state.start,
         limit: this.state.limit,
         type: this.state.tabs[this.state.tabCurIndex].type,
-        sort: index + 1
+        sort: this.state.tabs[index].id
       }, true);
     })
   }
   // 筛选
   handleFilter(filter) {
-    console.log(filter)
+    const state = this.state;
+    const data = {
+      keyword: state.searchValue,
+      start: state.start,
+      limit: state.limit,
+      type: state.tabs[state.tabCurIndex].type,
+      sort: state.tabs[state.curSortIndex].id
+    }
+    if(filter.cate) data.cat = filter.cate;
+    if(filter.tag) data.tag = filter.tag;
+    if(filter.status) data.isserial = filter.status;
+    if(filter.price) data.price = filter.price;
+    if(filter.num) data.wordCount = filter.num;
+    this.props.getSearchResult(data, true);
+    this.setState({
+      showFilter: false
+    })
   }
   // 创建搜索结果dom
   creatResultContent() {
@@ -312,7 +333,7 @@ class Search extends Component {
         {
           tabId === 1 ?
           <Fragment>
-            {sortOrFilter === 'sort' && showSort ? <SelectList show={showSort} list={sortList} handleClick={this.handleSort.bind(this)}/> : null}
+            {sortOrFilter === 'sort' && showSort ? <SelectList show={showSort} curindex={this.state.curSortIndex} list={sortList} handleClick={this.handleSort.bind(this)}/> : null}
             {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
           </Fragment>
           : null

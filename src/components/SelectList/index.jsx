@@ -5,7 +5,7 @@ class SelectList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      curIndex: 0,
+      curIndex: this.props.curindex,
     }
   }
   handleClick(index) {
