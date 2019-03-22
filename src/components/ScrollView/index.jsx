@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BScroll from 'better-scroll'
+import PropTypes from 'prop-types';
 import { debounce } from '@assets/js/utils';
 import './style.scss'
 
@@ -26,10 +27,14 @@ class ScrollView extends Component {
   }
   initScroll() {
     if(!this.refs.scrollView) return;
-    this.scroll = new BScroll(`.${this.refs.scrollView.className}`, {
-      click: true,
-      probeType: 2,
-    });
+    if(!this.scroll) {
+      this.scroll = new BScroll(`.${this.refs.scrollView.className}`, {
+        click: this.props.click,
+        probeType: 2,
+      });
+    } else {
+      this.scroll.refresh();
+    }
     // 是否实时监听
     this.props.listenScroll && this.scroll.on('scroll', pos => {
       this.props.listenScroll(pos)
@@ -48,6 +53,13 @@ class ScrollView extends Component {
       </div>
     )
   }
+}
+
+ScrollView.propTypes = {
+  click: PropTypes.bool
+}
+ScrollView.defaultProps = {
+  click: true,
 }
 
 export default ScrollView;

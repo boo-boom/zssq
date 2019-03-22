@@ -205,7 +205,7 @@ export function formatSearchArr(arr) {
     arr.forEach((item, index) => {
       newArr.push({
         text: item,
-        param: index,
+        param: item,
         active: false
       })
     })

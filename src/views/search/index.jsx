@@ -63,17 +63,17 @@ class Search extends Component {
       sortOrFilter: '',
       // 做多每项选择3个，用逗号分割拼接
       filterList: [
-        {title: '分类', type: 'cate', isMult: true, list: []},
-        {title: '标签', type: 'tag', isMult: true, list: []},
-        {title: '状态', type: 'status', isMult: false, list: [
+        {title: '分类', type: 'cate', isMult: true, checkTotal: 3, list: []},
+        {title: '标签', type: 'tag', isMult: true, checkTotal: 3, list: []},
+        {title: '状态', type: 'status', isMult: false, checkTotal: 1, list: [
           {text: '连载', param: 'true', active: false},
           {text: '完结', param: 'false', active: false},
         ]},
-        {title: '价格', type: 'price', isMult: false, list: [
+        {title: '价格', type: 'price', isMult: false, checkTotal: 1, list: [
           {text: 'VIP', param: '2', active: false},
           {text: '付费', param: '3', active: false},
         ]},
-        {title: '字数', type: 'num', isMult: true, list: [
+        {title: '字数', type: 'num', isMult: true, checkTotal: 3, list: [
           {text: '20万字内', param: '1', active: false},
           {text: '20万-50万字', param: '2', active: false},
           {text: '50万-100万字', param: '3', active: false},
@@ -81,7 +81,10 @@ class Search extends Component {
           {text: '200万字以上', param: '5', active: false},
         ]},
       ],
-      checkFilter: {}
+      checkFilter: {},
+      tempSearchValue: '',    // 临时字段，检查searchValue是否更新
+      tempFilterList: [],     // 临时字段，保存filterlist初始值
+      isSure: false,
     }
     this.changeSearch = this.changeSearch.bind(this);
     this.goIndex = this.goIndex.bind(this);
@@ -101,7 +104,8 @@ class Search extends Component {
       // 清空搜素结果
       this.props.setCleanResult()
       this.setState({
-        ...this._state
+        ...this._state,
+        searchValue: this.state.searchValue,
       })
       if (this.state.searchValue) {
         this.props.getSearchSuggest(this.state.searchValue)
@@ -112,14 +116,12 @@ class Search extends Component {
     }, 300)
     this.props.getSearchAll();
     this.setState({
-      searchHistory: JSON.parse(localStorage.getItem('searchHistory')) || []
+      searchHistory: JSON.parse(localStorage.getItem('searchHistory')) || [],
     })
   }
   componentWillUnmount() {
     this.cleanAllState()
-    this.setState({
-      ...this._state
-    })
+    this.setState(this._state)
     this._state = null
   }
   // 搜索框
@@ -146,7 +148,6 @@ class Search extends Component {
     // 隐藏搜索结果列表
     this.props.setShowSearchResult(false)
     this.setState(this._state)
-    console.log(this._state)
   }
   // 历史记录
   searchSubmit(e) {
@@ -214,7 +215,7 @@ class Search extends Component {
     // 清空联想词列表
     this.props.setCleanSuggest()
     this.setState({
-      searchValue: keyword
+      searchValue: keyword,
     })
   }
   // 滚动加载
@@ -253,25 +254,44 @@ class Search extends Component {
         sortOrFilter: type
       })
     } else {
-      this.props.getCateTag([
-        {
-          query: this.state.searchValue,
-          limit: 15,
-          type: this.state.tabs[this.state.tabCurIndex].type
-        }
-      ]).then(res => {
-        const filterList = this.state.filterList;
-        filterList[0].list = res[0];
-        filterList[1].list = res[1];
+      if(this.state.tempSearchValue !== this.state.searchValue) {
+        this.props.getCateTag([
+          {
+            query: this.state.searchValue,
+            limit: 15,
+            type: this.state.tabs[this.state.tabCurIndex].type
+          }
+        ]).then(res => {
+          const filterList = this.state.filterList;
+          filterList[0].list = res[0];
+          filterList[1].list = res[1];
+          this.setState({
+            filterList,
+            tempFilterList: cloneDeep(filterList)
+          })
+        });
         this.setState({
-          filterList
+          showFilter: !this.state.showFilter,
+          showSort: false,
+          sortOrFilter: type,
+          tempSearchValue: this.state.searchValue
         })
-      });
-      this.setState({
-        showFilter: !this.state.showFilter,
-        showSort: false,
-        sortOrFilter: type
+      } else {
+        this.setState({
+          showFilter: !this.state.showFilter,
+          showSort: false,
+          sortOrFilter: type,
+          tempSearchValue: this.state.searchValue
+        })
+      }
+      this.state.tempFilterList.length && !this.state.isSure && this.setState({
+        filterList: this.state.tempFilterList
       })
+      if(!this.state.showFilter) {
+        this.setState({
+          isSure: false
+        })
+      }
     }
   }
   // 排序
@@ -299,24 +319,46 @@ class Search extends Component {
       this.props.getSearchResult(data, true);
     })
   }
+  checkFilter(filter) {
+    const list = filter;
+    const check = {};
+    for (let i = 0; i < list.length; i++) {
+      for (let j = 0; j < list[i].list.length; j++) {
+        if(list[i].list[j].active) {
+          if(check[list[i].type]) {
+            check[list[i].type] += `${list[i].list[j].param},`;
+          } else {
+            check[list[i].type] = `${list[i].list[j].param},`;
+          }
+        }
+      }
+    }
+    for(let key in check) {
+      check[key] = check[key].replace(/,$/gi, '');
+    }
+    return check
+  }
   // 筛选
   handleFilter(filter) {
     this.setState({
       showFilter: false,
-      checkFilter: filter,
+      checkFilter: this.checkFilter(filter),
+      filterList: filter,
+      isSure: true
     })
     const state = this.state;
+    const _filter = this.checkFilter(filter);
     const data = {
       keyword: state.searchValue,
       start: state.start,
       limit: state.limit,
       type: state.tabs[state.tabCurIndex].type,
       sort: state.tabs[state.curSortIndex].id !== 1 ? state.tabs[state.curSortIndex].id : null,
-      cat: filter.cate,
-      tag: filter.tag,
-      isserial: filter.status,
-      price: filter.price,
-      wordCount: filter.num
+      cat: _filter.cate,
+      tag: _filter.tag,
+      isserial: _filter.status,
+      price: _filter.price,
+      wordCount: _filter.num
     }
     this.props.getSearchResult(data, true);
   }
@@ -344,7 +386,7 @@ class Search extends Component {
                 <span className="text">按综合</span>
                 <span className={`iconfont iconarrowll-${sortOrFilter==='sort'&&showSort?'b':'t'}`}></span>
               </div>
-              <div className={`btn ${sortOrFilter==='filter'&&showFilter?'cur':''}`} onClick={this.handleSortFilter.bind(this,'filter')}>
+              <div className={`btn ${sortOrFilter==='filter'&&showFilter?'cur':''}`} onClick={this.handleSortFilter.bind(this,'filter',this.state.searchValue )}>
                 <span className="text">筛选</span>
                 <span className={`iconfont iconarrowll-${sortOrFilter==='filter'&&showFilter?'b':'t'}`}></span>
               </div>
@@ -355,7 +397,7 @@ class Search extends Component {
           tabId === 1 ?
           <Fragment>
             {sortOrFilter === 'sort' && showSort ? <SelectList show={showSort} curindex={this.state.curSortIndex} list={sortList} handleClick={this.handleSort.bind(this)}/> : null}
-            {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} curcheck={this.state.checkFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
+            {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
           </Fragment>
           : null
         }
