@@ -375,7 +375,6 @@ class Search extends Component {
     const sortList = state.sortList;
     const sortType = state.sortType;
     const filterList = state.filterList;
-    // console.log(filterList)
     return (
       <div className="result-content">
         <Tab data={this.state.tabs} curIndex={this.handleGetTabIndex} />
