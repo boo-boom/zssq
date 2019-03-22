@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { cloneDeep } from 'lodash';
 import { debounce } from '@assets/js/utils';
 import {
   getSearchAll,
@@ -79,7 +80,8 @@ class Search extends Component {
           {text: '100万-200万字', param: '4', active: false},
           {text: '200万字以上', param: '5', active: false},
         ]},
-      ]
+      ],
+      checkFilter: {}
     }
     this.changeSearch = this.changeSearch.bind(this);
     this.goIndex = this.goIndex.bind(this);
@@ -90,12 +92,17 @@ class Search extends Component {
     this.pullup = this.pullup.bind(this);
   }
   componentWillMount() {
+    // 暂存筛选初始
+    this._state = cloneDeep(this.state);
     // 搜索框防抖
     this.debounce = debounce(() => {
       // 只要value改变则隐藏搜索结果列表
       this.props.setShowSearchResult(false)
       // 清空搜素结果
       this.props.setCleanResult()
+      this.setState({
+        ...this._state
+      })
       if (this.state.searchValue) {
         this.props.getSearchSuggest(this.state.searchValue)
       } else {
@@ -111,8 +118,9 @@ class Search extends Component {
   componentWillUnmount() {
     this.cleanAllState()
     this.setState({
-      start: 0
+      ...this._state
     })
+    this._state = null
   }
   // 搜索框
   changeSearch(e) {
@@ -137,13 +145,8 @@ class Search extends Component {
     this.props.setCleanResult()
     // 隐藏搜索结果列表
     this.props.setShowSearchResult(false)
-    this.setState({
-      hasmore: true,
-      tabCurIndex: 0,
-      curSortIndex: 0,
-      showSort: false,
-      showFilter: false,
-    })
+    this.setState(this._state)
+    console.log(this._state)
   }
   // 历史记录
   searchSubmit(e) {
@@ -220,12 +223,21 @@ class Search extends Component {
     this.setState({
       start: this.state.start + this.state.limit,
     })
-    this.props.getSearchResult({
-      keyword: this.state.searchValue,
-      start: this.state.start,
-      limit: this.state.limit,
-      type: this.state.tabs[this.state.tabCurIndex].type
-    }).then(res => {
+    const state = this.state;
+    const filter = state.checkFilter;
+    const data = {
+      keyword: state.searchValue,
+      start: state.start,
+      limit: state.limit,
+      type: state.tabs[state.tabCurIndex].type,
+      sort: state.tabs[state.curSortIndex].id !== 1 ? state.tabs[state.curSortIndex].id : null,
+      cat: filter.cate,
+      tag: filter.tag,
+      isserial: filter.status,
+      price: filter.price,
+      wordCount: filter.num
+    }
+    this.props.getSearchResult(data).then(res => {
       this.setState({
         hasmore: res.total > (this.state.start + this.state.limit) ? true : false
       })
@@ -270,34 +282,43 @@ class Search extends Component {
       sortType: this.state.sortList[index].type,
       curSortIndex: index,
     }, () => {
-      this.props.getSearchResult({
-        keyword: this.state.searchValue,
-        start: this.state.start,
-        limit: this.state.limit,
-        type: this.state.tabs[this.state.tabCurIndex].type,
-        sort: this.state.tabs[index].id
-      }, true);
+      const state = this.state;
+      const filter = state.checkFilter;
+      const data = {
+        keyword: state.searchValue,
+        start: state.start,
+        limit: state.limit,
+        type: state.tabs[state.tabCurIndex].type,
+        sort: state.tabs[state.curSortIndex].id !== 1 ? state.tabs[state.curSortIndex].id : null,
+        cat: filter.cate,
+        tag: filter.tag,
+        isserial: filter.status,
+        price: filter.price,
+        wordCount: filter.num
+      }
+      this.props.getSearchResult(data, true);
     })
   }
   // 筛选
   handleFilter(filter) {
+    this.setState({
+      showFilter: false,
+      checkFilter: filter,
+    })
     const state = this.state;
     const data = {
       keyword: state.searchValue,
       start: state.start,
       limit: state.limit,
       type: state.tabs[state.tabCurIndex].type,
-      sort: state.tabs[state.curSortIndex].id
+      sort: state.tabs[state.curSortIndex].id !== 1 ? state.tabs[state.curSortIndex].id : null,
+      cat: filter.cate,
+      tag: filter.tag,
+      isserial: filter.status,
+      price: filter.price,
+      wordCount: filter.num
     }
-    if(filter.cate) data.cat = filter.cate;
-    if(filter.tag) data.tag = filter.tag;
-    if(filter.status) data.isserial = filter.status;
-    if(filter.price) data.price = filter.price;
-    if(filter.num) data.wordCount = filter.num;
     this.props.getSearchResult(data, true);
-    this.setState({
-      showFilter: false
-    })
   }
   // 创建搜索结果dom
   creatResultContent() {
@@ -334,7 +355,7 @@ class Search extends Component {
           tabId === 1 ?
           <Fragment>
             {sortOrFilter === 'sort' && showSort ? <SelectList show={showSort} curindex={this.state.curSortIndex} list={sortList} handleClick={this.handleSort.bind(this)}/> : null}
-            {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
+            {sortOrFilter === 'filter' && showFilter ? <SearchFilter show={showFilter} curcheck={this.state.checkFilter} list={filterList} triggerFilter={this.handleFilter.bind(this)}/> : null}
           </Fragment>
           : null
         }

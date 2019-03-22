@@ -5,6 +5,7 @@ import './style.scss'
 class SearchFilter extends Component {
   constructor(props) {
     super(props)
+    console.log(this.props.curcheck)
     this.state = {
       list: [],
       filters: {
@@ -64,11 +65,11 @@ class SearchFilter extends Component {
       } else {
         _filters[item] = filters[item];
       }
-    }
-    for(let item in _filters) {
       if(Object.prototype.toString.call(_filters[item]) === '[object Array]') {
         if(!_filters[item].length) _filters[item] = '';
       }
+    }
+    for(let item in _filters) {
       if(_filters[item]) {
         isSure = true;
         break
