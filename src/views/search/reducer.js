@@ -47,7 +47,7 @@ export function search(state=stateDefault, action) {
 
 export const getSearchAll = () => {
   return dispatch => {
-    // 可以在这包一层prosime，调用时可以使用then
+    // 可以在这包一层Promise，调用时可以使用then
     // return new Promise((resolve, reject) => {
       $axios([
         {url: '/search_recommend'},
